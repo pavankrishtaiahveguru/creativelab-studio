@@ -1,15 +1,35 @@
+import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import testimonialsData from "../data/testimonialsData";
 
+const ITEMS_PER_PAGE = 3;
+
 const Testimonials = () => {
+  const [currentGroup, setCurrentGroup] = useState(0);
+
+  const totalGroups = Math.ceil(testimonialsData.length / ITEMS_PER_PAGE);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentGroup((prev) => (prev + 1 >= totalGroups ? 0 : prev + 1));
+    }, 15000);
+
+    return () => clearInterval(interval);
+  }, [totalGroups]);
+
+  const visibleTestimonials = testimonialsData.slice(
+    currentGroup * ITEMS_PER_PAGE,
+    currentGroup * ITEMS_PER_PAGE + ITEMS_PER_PAGE,
+  );
+
   return (
     <section id="testimonials" className="bg-white py-32 overflow-hidden">
       <div className="max-w-350 mx-auto px-6 sm:px-8 lg:px-12">
         {/* Heading */}
 
         <div className="text-center mb-24">
-          <p className="font-[Nexa] uppercase tracking-[5px] text-[#6F00FF] text-xl text-bold mb-5">
+          <p className="font-[Nexa] uppercase tracking-[5px] text-[#6F00FF] text-xl font-bold mb-5">
             TESTIMONIALS
           </p>
 
@@ -22,7 +42,7 @@ const Testimonials = () => {
         {/* Cards */}
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {testimonialsData.map((item) => (
+          {visibleTestimonials.map((item) => (
             <div
               key={item.id}
               className="group relative bg-[#FBFAFF] border border-[#ECE2FF] rounded-2xl p-10 lg:p-12 overflow-hidden duration-500 hover:-translate-y-3 hover:shadow-[0_35px_80px_rgba(111,0,255,0.12)]"

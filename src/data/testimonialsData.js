@@ -19,6 +19,12 @@ const testimonialsData = [
     role: "CEO, Aurelia Skin",
     text: "Working with CreativeLab Studio felt collaborative, inspiring, and creatively refreshing from start to finish.",
   },
+  {
+    id: "04",
+    name: "Daniel ",
+    role: "CAO, Aurelia Skin",
+    text: "Working with CreativeLab Studio felt collaborative, inspiring, and creatively refreshing from start to finish.",
+  },
 ];
 
 export default testimonialsData;

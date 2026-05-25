@@ -1,320 +1,181 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import {
+  RiLightbulbFlashLine,
+  RiDraftLine,
+  RiRocketLine,
+  RiLineChartLine,
+  RiArrowLeftSLine,
+  RiArrowRightSLine,
+} from "react-icons/ri";
 
-const steps = [
+import ParallaxImage from "../ParallaxImage";
+
+const process = [
   {
+    id: 1,
     number: "01",
-    title: "Discovery",
-    desc: "Understanding brand goals, audience, positioning, and vision to uncover the true essence of your brand.",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <circle cx="14" cy="14" r="7" stroke="#6F00FF" strokeWidth="1.5" />
-        <path
-          d="M19.5 19.5l5 5"
-          stroke="#6F00FF"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <circle cx="14" cy="14" r="3" stroke="#C0FF00" strokeWidth="1.5" />
-        <path
-          d="M14 11v3M14 17v.3"
-          stroke="#6F00FF"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    ),
+    title: "Discovery & Ideation",
+    icon: RiLightbulbFlashLine,
+    desc: "Understand goals and brainstorm premium ideas.",
   },
   {
+    id: 2,
     number: "02",
-    title: "Strategy",
-    desc: "Building creative direction, visual systems, and experience planning aligned with your brand's vision.",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <path
-          d="M4 24l7-7 4 4 8-10 5 6"
-          stroke="#6F00FF"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <circle cx="26" cy="6" r="2" fill="#C0FF00" />
-        <path
-          d="M4 28h24"
-          stroke="#6F00FF"
-          strokeWidth="1.2"
-          strokeLinecap="round"
-          opacity="0.3"
-        />
-      </svg>
-    ),
+    title: "Concept Development",
+    icon: RiDraftLine,
+    desc: "Transform ideas into detailed creative systems.",
   },
   {
+    id: 3,
     number: "03",
-    title: "Design & Dev",
-    desc: "Crafting immersive visuals, cinematic websites, and creative assets with precision and artistry.",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <rect
-          x="4"
-          y="4"
-          width="24"
-          height="24"
-          rx="4"
-          stroke="#6F00FF"
-          strokeWidth="1.5"
-        />
-        <circle cx="10" cy="10" r="2" stroke="#C0FF00" strokeWidth="1.5" />
-        <path d="M4 16h24" stroke="#6F00FF" strokeWidth="1.2" opacity="0.3" />
-        <path
-          d="M10 22l4-4 3 3 4-5"
-          stroke="#6F00FF"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    title: "Production & Execution",
+    icon: RiRocketLine,
+    desc: "Craft immersive premium digital experiences.",
   },
   {
+    id: 4,
     number: "04",
-    title: "Refine & Launch",
-    desc: "Polishing every detail and delivering impactful, cohesive brand experiences ready for the world.",
-    icon: (
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <path
-          d="M16 4l2.5 7.5H26l-6 4.5 2.5 7.5L16 19l-6.5 4.5 2.5-7.5L6 11.5h7.5z"
-          stroke="#6F00FF"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M16 22v7M12 26l4 3 4-3"
-          stroke="#C0FF00"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    title: "Launch & Evaluation",
+    icon: RiLineChartLine,
+    desc: "Deliver polished results and optimize growth.",
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 60 },
-  show: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.75,
-      delay: i * 0.15,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  }),
-};
+export default function Process() {
+  const [current, setCurrent] = useState(0);
 
-const Process = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const sliderRef = useRef(null);
+
+  const next = () => {
+    setCurrent((prev) => (prev + 1) % process.length);
+  };
+
+  const prev = () => {
+    setCurrent((prev) => (prev - 1 + process.length) % process.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(next, 4500);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
-    <section className="relative bg-[#ECE7FF] py-24 sm:py-32 overflow-hidden">
-      {/* Floating blur blobs */}
-      <motion.div
-        className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#6F00FF]/8 blur-[130px] pointer-events-none"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-[#C0FF00]/10 blur-[120px] pointer-events-none"
-        animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.6, 0.3] }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 3,
-        }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-[#7B68EE]/5 blur-[100px] pointer-events-none"
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
+    <section className="relative min-h-screen overflow-hidden py-28 bg-[#0D071A]">
+      <ParallaxImage
+        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop"
+        alt="Background"
       />
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16">
-        {/* ── Header ── */}
+      <div className="absolute inset-0 bg-[#0D071A]/65" />
+
+      <div className="absolute inset-0 bg-linear-to-b from-[#0D071A]/10 to-[#0D071A]/20" />
+
+      <div className="relative z-20 max-w-7xl mx-auto px-6">
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-20 sm:mb-24"
-          initial="hidden"
-          whileInView="show"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.15 } },
-          }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <motion.p
-            className="font-[Nexa] uppercase tracking-[6px] text-[#6F00FF] text-xs sm:text-sm mb-5"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-            }}
-          >
+          <h2 className="text-[#8B5CF6] text-5xl md:text-6xl font-light">
             Our Process
-          </motion.p>
-
-          <motion.h2
-            className="font-[Founders] text-[#111] text-4xl sm:text-5xl lg:text-6xl leading-[1.02] mb-6"
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.75 } },
-            }}
-          >
-            How ideas become{" "}
-            <span className="italic text-[#6F00FF]">meaningful</span>
-            <br />
-            experiences
-            <span className="text-[#6F00FF]">.</span>
-          </motion.h2>
-
-          <motion.p
-            className="font-[Nexa] text-[#555] text-base sm:text-lg leading-[1.9]"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
-            }}
-          >
-            Our process blends strategy, storytelling, and design thinking into
-            experiences that feel elevated, intentional, and memorable.
-          </motion.p>
+          </h2>
         </motion.div>
 
-        {/* ── Timeline connector — desktop only ── */}
-        <div className="hidden lg:block relative mb-[-28px] z-10 px-[calc(1400px/8)]">
-          <div className="mx-auto max-w-[1400px] px-16">
-            <motion.div
-              className="h-[1px] bg-gradient-to-r from-transparent via-[#CCCCFF] to-transparent"
-              initial={{ scaleX: 0, opacity: 0 }}
-              whileInView={{ scaleX: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-            />
-          </div>
+        <div className="overflow-hidden">
+          <motion.div
+            ref={sliderRef}
+            animate={{
+              x:
+                window.innerWidth < 768
+                  ? `${-current * 100}%`
+                  : `${-current * 33.5}%`,
+            }}
+            transition={{
+              duration: 0.85,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="flex gap-6"
+          >
+            {process.map((item, index) => {
+              const Icon = item.icon;
+
+              const active = current === index;
+
+              return (
+                <motion.div
+                  key={item.id}
+                  whileHover={{
+                    y: -10,
+                    scale: 1.02,
+                  }}
+                  transition={{
+                    duration: 0.35,
+                  }}
+                  className="shrink-0 w-full md:w-[calc(33.33%-16px)] rounded-[28px] backdrop-blur-xl border border-[rgba(139,92,246,.18)] bg-[rgba(18,10,35,.58)] p-8 shadow-[0_25px_80px_rgba(139,92,246,.12)]"
+                >
+                  <div className="flex items-center justify-between">
+                    <div
+                      className={` w-16 h-16 rounded-full border flex items-center justify-center transition-all duration-500
+                    ${
+                      active
+                        ? "border-[#8B5CF6] bg-[#8B5CF6]/10 shadow-[0_0_35px_rgba(139,92,246,.25)]"
+                        : "border-white/15"
+                    }
+                    `}
+                    >
+                      <Icon size={28} color={active ? "#8B5CF6" : "#F8F7FF"} />
+                    </div>
+
+                    <div className="text-[#F8F7FF]/15 text-5xl font-light">
+                      {item.number}
+                    </div>
+                  </div>
+
+                  <h3 className="mt-8 text-2xl text-[#F8F7FF]">{item.title}</h3>
+
+                  <p className="mt-4 leading-8 text-[rgba(248,247,255,.68)]">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
 
-        {/* ── Cards ── */}
-        <div
-          ref={ref}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
-        >
-          {steps.map((step, i) => (
+        <div className="flex items-center gap-4 mt-14">
+          <button
+            onClick={prev}
+            className="w-11 h-11 rounded-full border border-white/10 text-[#F8F7FF] flex items-center justify-center hover:border-[#8B5CF6] hover:text-[#8B5CF6] transition"
+          >
+            <RiArrowLeftSLine size={22} />
+          </button>
+
+          <div className="flex-1 h-[3px] bg-white/10 rounded-full overflow-hidden">
             <motion.div
-              key={i}
-              custom={i}
-              variants={cardVariants}
-              initial="hidden"
-              animate={inView ? "show" : "hidden"}
-              whileHover={{
-                y: -10,
-                transition: { duration: 0.3, ease: "easeOut" },
+              animate={{
+                width: `${((current + 1) / process.length) * 100}%`,
               }}
-              className="relative bg-white/60 backdrop-blur-[20px] border border-white/80 rounded-[32px] p-8 sm:p-9 flex flex-col gap-6 shadow-[0_8px_40px_rgba(111,0,255,0.07)] hover:shadow-[0_24px_60px_rgba(111,0,255,0.14)] transition-shadow duration-500 overflow-hidden group"
-            >
-              {/* Card inner glow on hover */}
-              <motion.div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-[#6F00FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              transition={{
+                duration: 0.7,
+              }}
+              className="h-full bg-[#8B5CF6] rounded-full shadow-[0_0_18px_rgba(139,92,246,.45)]"
+            />
+          </div>
 
-              {/* Top — number + icon */}
-              <div className="flex items-start justify-between">
-                {/* Premium large number */}
-                <span
-                  className="font-[Founders] text-[#6F00FF]/10 leading-none select-none pointer-events-none"
-                  style={{ fontSize: "5.5rem" }}
-                >
-                  {step.number}
-                </span>
-
-                {/* Icon box */}
-                <motion.div
-                  className="w-[56px] h-[56px] rounded-2xl bg-[#ECE7FF] border border-[#CCCCFF] flex items-center justify-center flex-shrink-0 mt-2 shadow-[0_4px_16px_rgba(111,0,255,0.1)]"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {step.icon}
-                </motion.div>
-              </div>
-
-              {/* Step label */}
-              <div className="flex items-center gap-3 -mt-3">
-                <motion.div
-                  className="h-[2px] bg-gradient-to-r from-[#6F00FF] to-[#C0FF00] rounded-full"
-                  initial={{ width: 0 }}
-                  animate={inView ? { width: "2rem" } : {}}
-                  transition={{ duration: 0.8, delay: i * 0.15 + 0.5 }}
-                />
-                <span className="font-[Nexa] text-[#6F00FF] text-xs tracking-[4px] uppercase">
-                  Step {step.number}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h3 className="font-[Founders] text-[#111] text-2xl sm:text-3xl leading-[1.05] -mt-2">
-                {step.title}
-              </h3>
-
-              {/* Desc */}
-              <p className="font-[Nexa] text-[#555] text-sm sm:text-base leading-[1.85]">
-                {step.desc}
-              </p>
-
-              {/* Bottom lime dot accent */}
-              <div className="mt-auto flex items-center gap-2">
-                <motion.div
-                  className="w-2 h-2 rounded-full bg-[#C0FF00]"
-                  animate={{ scale: [1, 1.4, 1], opacity: [0.6, 1, 0.6] }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: i * 0.4,
-                  }}
-                />
-                <motion.div
-                  className="h-[1px] bg-gradient-to-r from-[#C0FF00]/40 to-transparent flex-1"
-                  initial={{ scaleX: 0, originX: 0 }}
-                  animate={inView ? { scaleX: 1 } : {}}
-                  transition={{ duration: 0.8, delay: i * 0.15 + 0.6 }}
-                />
-              </div>
-
-              {/* Bottom sweep border */}
-              <motion.div
-                className="absolute bottom-0 left-0 h-[3px] rounded-b-[32px] bg-gradient-to-r from-[#6F00FF] to-[#C0FF00]"
-                initial={{ width: "0%" }}
-                animate={inView ? { width: "100%" } : {}}
-                transition={{
-                  duration: 1,
-                  delay: i * 0.2 + 0.4,
-                  ease: "easeOut",
-                }}
-              />
-
-              {/* Connector dot — desktop only */}
-              {i < steps.length - 1 && (
-                <div className="hidden lg:flex absolute -right-3.5 top-8 z-20 w-7 h-7 rounded-full bg-white border-2 border-[#CCCCFF] items-center justify-center shadow-[0_4px_12px_rgba(111,0,255,0.12)]">
-                  <div className="w-2 h-2 rounded-full bg-[#6F00FF]" />
-                </div>
-              )}
-            </motion.div>
-          ))}
+          <button
+            onClick={next}
+            className="w-11 h-11 rounded-full border border-white/10 text-[#F8F7FF] flex items-center justify-center hover:border-[#8B5CF6] hover:text-[#8B5CF6] transition"
+          >
+            <RiArrowRightSLine size={22} />
+          </button>
         </div>
       </div>
     </section>
   );
-};
-
-export default Process;
+}

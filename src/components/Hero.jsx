@@ -1,6 +1,11 @@
 import { FaPhoneAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import hero from "../assets/images/hero.png";
+import heroBg from "../assets/images/hero_bg.png";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   const scrollItems = [
     "BRANDING",
     "CREATIVE DIRECTION",
@@ -15,7 +20,10 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative bg-[#ECE7FF] overflow-hidden flex items-center min-h-screen"
+      className=" relative bg-[#ECE7FF] overflow-hidden flex items-center min-h-screen bg-cover bg-position-[left_15%_center] md:bg-center lg:bg-center"
+      style={{
+        backgroundImage: `url(${heroBg})`,
+      }}
     >
       {/* Background Blur */}
 
@@ -52,55 +60,37 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <button className="bg-[#6F00FF] hover:bg-[#7B68EE] text-white px-8 py-4 rounded-full flex items-center justify-center gap-3 duration-300 hover:scale-105 shadow-[0_15px_40px_rgba(111,0,255,0.22)] font-[Nexa] font-semibold cursor-pointer">
+              <button
+                onClick={() => navigate("/contact")}
+                className="bg-[#6F00FF] hover:bg-[#7B68EE] text-white px-8 py-4 rounded-full flex items-center justify-center gap-3 duration-300 hover:scale-105 shadow-[0_15px_40px_rgba(111,0,255,0.22)] font-[Nexa] font-semibold cursor-pointer"
+              >
                 <FaPhoneAlt className="text-sm" />
                 Start Your Project
               </button>
 
-              <button className="bg-white/70 backdrop-blur-md border border-[#D7CCFF] hover:border-[#6F00FF] text-[#111111] px-8 py-4 rounded-full duration-300 hover:scale-105 hover:bg-white shadow-[0_10px_30px_rgba(111,0,255,0.08)] cursor-pointer font-[Nexa] font-semibold">
+              <button
+                onClick={() => navigate("/portfolio")}
+                className="bg-white hover:bg-[#F5F2FF] text-[#111111] px-10 py-4 rounded-full font-[Nexa] font-semibold border border-transparent hover:border-[#6F00FF] duration-300 hover:scale-105 hover:shadow-[0_10px_30px_rgba(111,0,255,0.25)] cursor-pointer"
+              >
                 View Our Work
               </button>
             </div>
           </div>
 
           {/* RIGHT */}
-
-          <div className="flex justify-center lg:justify-end">
-            <div className="bg-white rounded-[28px] lg:rounded-[34px] border border-[#E3DAFF] shadow-[0_20px_70px_rgba(111,0,255,0.12)] p-6 sm:p-8 lg:p-10 max-w-[340px] sm:max-w-[420px] lg:max-w-[480px] w-full">
-              <div className="flex gap-3 mb-6">
-                <div className="w-16 lg:w-20 h-3 rounded-full bg-[#6F00FF]" />
-
-                <div className="w-8 lg:w-10 h-3 rounded-full bg-[#C0FF00]" />
-              </div>
-
-              <h3 className="font-[Founders] text-[28px] sm:text-[38px] lg:text-[46px] leading-[1.08] text-[#111111]">
-                Design That Speaks
-                <br />
-                Creativity That
-                <br />
-                Connects.
-              </h3>
-
-              <p className="font-[Nexa] text-[#666666] leading-8 mt-6 text-sm sm:text-base">
-                We transform ideas into visuals that inspire, engage, and leave
-                a lasting impression.
-              </p>
-
-              <div className="flex gap-4 mt-8">
-                <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-[#6F00FF]" />
-
-                <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-[#C0FF00]" />
-
-                <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-[#F4C2C2]" />
-              </div>
-            </div>
-          </div>
+          {/* <div className="hidden lg:block">
+            <img
+              src={hero}
+              alt="Hero Background"
+              className="w-full h-auto object-cover rounded-[28px] shadow-[0_24px_80px_rgba(111,0,255,0.12)]"
+            />
+          </div> */}
         </div>
       </div>
 
       {/* HERO SCROLL TEXT */}
 
-      <div className="absolute bottom-0 left-0 w-full border-y border-[#D9CCFF] bg-white/30 backdrop-blur-xl overflow-hidden py-2 z-20">
+      <div className="absolute bottom-0 left-0 w-full border-y border-[#D9CCFF] bg-white/30 backdrop-blur-xl overflow-hidden pt-2.5 z-20">
         <div className="flex whitespace-nowrap animate-marquee">
           {[...Array(3)].map((_, repeatIndex) => (
             <div key={repeatIndex} className="flex items-center shrink-0">

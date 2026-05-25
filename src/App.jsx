@@ -5,11 +5,15 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
+import DiscoveryCall from "./pages/DiscoveryCall";
 import NavBar from "./components/NavBar";
+import ScrollToTop from "./components/ScrollToTop";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,6 +25,10 @@ function App() {
         <Route path="/portfolio" element={<Portfolio />} />
 
         <Route path="/contact" element={<Contact />} />
+
+        <Route path="/discovery-call" element={<DiscoveryCall />} />
+
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

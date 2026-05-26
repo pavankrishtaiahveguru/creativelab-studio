@@ -111,11 +111,11 @@ h6 {
   }
 }
 
+/* LET'S CREATE NEW EXPERIENCE */
 .marquee-track {
-   display: flex;
   width: max-content;
   padding-left: 40px;
-  animation: marqueeMove 10s linear infinite;
+  animation: marqueeMove 20s linear infinite;
   will-change: transform;
 }
 
@@ -129,9 +129,12 @@ h6 {
   }
 
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
+
+
+/* rocket */
 
 @keyframes float {
   0% {
@@ -139,7 +142,7 @@ h6 {
   }
 
   50% {
-    transform: translateY(-18px);
+    transform: translateY(-40px);
   }
 
   100% {

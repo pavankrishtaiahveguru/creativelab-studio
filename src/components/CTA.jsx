@@ -32,14 +32,14 @@ const CTA = () => {
             <div className="flex flex-wrap justify-center gap-5">
               <button
                 onClick={() => navigate("/discovery-call")}
-                className="bg-white text-[#111111] hover:bg-[#ECE7FF] px-8 py-4 rounded-full font-[Nexa] font-semibold shadow-[0_15px_35px_rgba(255,255,255,0.18)] hover:shadow-[0_20px_45px_rgba(255,255,255,0.25)] duration-300 hover:scale-105 cursor-pointer"
+                className="bg-white text-[#111111] hover:bg-[#ECE7FF] px-8 py-4 rounded-full font-[Nexa] font-semibold shadow-[0_5px_25px_rgba(255,255,255,0.18)] hover:shadow-[0_10px_35px_rgba(255,255,255,0.25)] duration-300 hover:scale-105 cursor-pointer"
               >
                 Book a Discovery Call
               </button>
 
               <button
                 onClick={() => navigate("/contact")}
-                className="border border-white text-white hover:bg-white hover:text-[#6F00FF] px-8 py-4 rounded-full font-[Nexa] font-semibold shadow-[0_15px_35px_rgba(255,255,255,0.10)] hover:shadow-[0_20px_45px_rgba(255,255,255,0.18)] duration-300 hover:scale-105 cursor-pointer"
+                className="border border-white text-white hover:bg-white hover:text-[#6F00FF] px-8 py-4 rounded-full font-[Nexa] font-semibold shadow-[0_5px_25px_rgba(255,255,255,0.10)] hover:shadow-[0_10px_35px_rgba(255,255,255,0.18)] duration-300 hover:scale-105 cursor-pointer"
               >
                 Start Your Project
               </button>

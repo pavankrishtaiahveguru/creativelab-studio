@@ -14,21 +14,18 @@ const Story = () => {
           className="max-w-262.5 mx-auto text-center"
         >
           <h2 className="font-[Founders] text-[#111111] text-xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-[-0.04em]">
-            We believe creativity is more than design
-            <br />
-            <span className="text-[#6F00FF]"> it’s an experience </span>
-            worth feeling.
+            We create premium brand experiences that turn strategy into
+            <span className="text-[#6F00FF]"> elegant visuals</span> and lasting
+            recognition.
           </h2>
 
           <p className="font-[Nexa] text-[#555555] text-lg lg:text-xl leading-[1.9] max-w-237 mx-auto mt-8">
-            At CreativeLab Studio, we craft bold visual identities, immersive
-            brand experiences, and emotionally driven storytelling that leave a
-            lasting impression. Founded with a passion for design innovation and
-            artistic thinking, our studio blends strategy, aesthetics, and
-            modern culture to create work that feels timeless yet unforgettable.
-            From branding and digital experiences to cinematic visuals and
-            creative campaigns, we transform ideas into meaningful visual
-            stories that connect brands with people in a powerful way.
+            CreativeLab Studio partners with founders and modern businesses to
+            shape brand identities, website experiences, digital marketing
+            campaigns, and creative production that feel elevated, intentional,
+            and built to endure. Our process blends strategy, storytelling, and
+            design so every touchpoint reflects a confident and memorable brand
+            presence.
           </p>
         </motion.div>
 
@@ -46,8 +43,8 @@ const Story = () => {
           >
             <div className="overflow-hidden w-223 rounded-3xl border border-[#D7D7D7]">
               <img
-                src="/images/story-main.jpg"
-                alt="CreativeLab Studio"
+                src="https://res.cloudinary.com/dcnmzhp9k/image/upload/v1779810372/sweet-life-npQNtKDR21o-unsplash_j5otgr.jpg"
+                alt="CreativeLab Studio team crafting premium branding and digital design concepts"
                 className="w-full h-135 object-cover"
               />
             </div>
@@ -68,15 +65,13 @@ const Story = () => {
               </h3>
 
               <p className="font-[Nexa] text-[#555555] leading-loose text-lg">
-                At CreativeLab Studio, our mission is to create visually
-                intelligent experiences that inspire emotion, build identity,
-                and elevate brands beyond trends. We believe every brand has a
-                unique voice waiting to be expressed through thoughtful design,
-                storytelling, and innovation. Our focus is not only on creating
-                beautiful visuals, but crafting experiences that feel authentic,
-                memorable, and strategically impactful. Through creativity,
-                collaboration, and detail-driven execution, we turn ideas into
-                brands people genuinely connect with.
+                Our mission is to shape premium brand experiences through
+                strategic creativity, refined visual systems, and meaningful
+                storytelling.
+                <br />
+                We help businesses communicate with clarity, build trust through
+                design, and create memorable digital touchpoints that support
+                visibility, engagement, and long-term growth.
               </p>
             </div>
           </motion.div>
@@ -96,15 +91,13 @@ const Story = () => {
               </h3>
 
               <p className="font-[Nexa] text-[#555555] leading-[2] text-lg">
-                We envision CreativeLab Studio as a modern creative house where
-                art, design, culture, and storytelling merge into one powerful
-                language. Our goal is to build brands that stand out with
-                originality, elegance, and emotional depth. We aspire to push
-                creative boundaries, explore new visual possibilities, and
-                create work that feels artistically bold and commercially
-                meaningful. Driven by imagination and innovation, we shape
-                experiences that inspire audiences and redefine modern
-                creativity.
+                We envision CreativeLab Studio as a globally trusted creative
+                agency known for premium branding, immersive websites, and
+                high-impact digital campaigns.
+                <br />
+                Our goal is to shape modern brand identities that remain
+                elegant, emotionally resonant, and commercially effective in a
+                fast-moving digital landscape.
               </p>
             </div>
           </motion.div>
@@ -120,8 +113,8 @@ const Story = () => {
           >
             <div className="overflow-hidden rounded-3xl border border-[#D7D7D7]">
               <img
-                src="/images/team-photo.jpg"
-                alt="CreativeLab Team"
+                src="https://res.cloudinary.com/dcnmzhp9k/image/upload/v1779810375/van-tay-media-YK1AJT_5e5Q-unsplash_nb2dia.jpg"
+                alt="CreativeLab Studio team working on branding, website design, and motion content"
                 className="w-full h-105 object-cover"
               />
             </div>

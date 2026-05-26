@@ -9,36 +9,36 @@ import {
 const services = [
   {
     id: "01",
-    title: "Brand Identity",
+    title: "Brand Identity & Strategy",
     description:
-      "Distinctive visual systems designed to shape how your audience sees, feels, and remembers your brand.",
+      "Logo design, brand storytelling, packaging design, and strategic brand identity systems for modern businesses seeking a premium market presence.",
     icon: HiOutlineSparkles,
     gradient: "from-[#6F00FF] to-[#8B5CF6]",
   },
 
   {
     id: "02",
-    title: "Website Design",
+    title: "Website Design & Development",
     description:
-      "Luxury-inspired digital experiences crafted to feel immersive, seamless, and visually intelligent.",
+      "UI/UX design and website development for elegant, responsive, and conversion-ready digital experiences that reflect your brand with confidence.",
     icon: HiOutlineGlobeAlt,
     gradient: "from-[#C0FF00] to-[#A3E635]",
   },
 
   {
     id: "03",
-    title: "Creative Direction",
+    title: "Creative Production",
     description:
-      "Strategic visual storytelling designed to align every touchpoint with a cohesive visual vision.",
+      "Photography, product styling, digital ad films, and social media content designed to strengthen visual storytelling across every channel.",
     icon: HiOutlinePhoto,
     gradient: "from-[#8B5CF6] to-[#7C3AED]",
   },
 
   {
     id: "04",
-    title: "Campaign Design",
+    title: "Digital Marketing Strategy",
     description:
-      "Thoughtfully designed content systems created for modern digital audiences and ambitious brands.",
+      "Social media marketing, LinkedIn marketing, Google Ads, SEO, and PPC support with creative direction that aligns marketing visibility with brand positioning.",
     icon: HiOutlinePresentationChartLine,
     gradient: "from-[#D946EF] to-[#C026D3]",
   },

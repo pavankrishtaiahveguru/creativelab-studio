@@ -10,59 +10,59 @@ import {
 
 const services = [
   {
-    title: "Branding",
+    title: "Branding & Brand Strategy",
     icon: HiOutlineSparkles,
     items: [
-      "Logo design",
+      "Logo Design",
       "Brand Identity Design",
-      "Brand storytelling",
+      "Brand Storytelling",
       "Brand Strategy",
       "Rebranding",
-      "Packaging design",
-      "Marketing collaterals",
+      "Packaging Design",
+      "Marketing Collaterals",
     ],
   },
 
   {
-    title: "Creative Production",
+    title: "Creative Production & Visual Storytelling",
     icon: HiOutlineLightBulb,
     items: [
-      "Digital ad films",
+      "Digital Ad Films",
       "TVC",
-      "Product styling",
+      "Product Styling",
       "Photography",
-      "Social media content",
+      "Social Media Content",
     ],
   },
 
   {
-    title: "Digital Marketing",
+    title: "Digital Marketing Strategy",
     icon: HiOutlinePresentationChartLine,
     items: [
       "Social Media Marketing",
-      "LinkedIn marketing",
+      "LinkedIn Marketing",
       "Personal Branding",
       "Influencer Marketing",
       "Google Ads",
-      "SEO",
+      "SEO Services",
       "PPC",
     ],
   },
 
   {
-    title: "Web Design and Development",
+    title: "Website Design & Development",
     icon: HiOutlineCodeBracketSquare,
     items: ["UI / UX Design", "Website Development"],
   },
 
   {
-    title: "Digital Design",
+    title: "Digital Design & Motion Graphics",
     icon: HiOutlineSquares2X2,
     items: ["Illustrations", "Animation", "Motion Graphics"],
   },
 
   {
-    title: "Product Design",
+    title: "Product Design & Packaging",
     icon: HiOutlineCube,
     items: ["Packaging Design", "Packaging Labels"],
   },

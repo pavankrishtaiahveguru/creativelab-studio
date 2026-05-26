@@ -86,16 +86,14 @@ const fadeUp = {
 };
 
 const paragraphs = [
-  "At CreativeLab Studio, we believe design should do more than simply look beautiful — it should communicate, connect, and create emotion.",
-  "We work closely with brands to craft identities and experiences that feel elevated, memorable, and strategically aligned with their vision.",
-  "From visual identity systems to cinematic websites and creative campaigns, every detail is carefully designed to reflect authenticity, sophistication, and impact.",
+  "CreativeLab Studio is a premium creative agency supporting branding, brand strategy, website design, creative production, and digital marketing for founders and modern businesses. We combine strategy, visual storytelling, and refined digital design to create brand experiences that feel elegant, memorable, and built to perform.",
 ];
 
 const stats = [
   { value: 120, suffix: "+", label: "Projects\nCrafted", delay: 0 },
   { value: 45, suffix: "+", label: "Brands\nCollaborated", delay: 0.12 },
   { value: 5, suffix: "+", label: "Creative\nIndustries", delay: 0.24 },
-  { value: 999, suffix: "+", label: "Ideas & Possibilitiees", delay: 0.24 },
+  { value: 999, suffix: "+", label: "Ideas & Possibilities", delay: 0.24 },
 ];
 
 // ── Main Component ────────────────────────
@@ -119,15 +117,8 @@ const StandOut = () => {
             className="font-[Founders] text-[#111] leading-[1] max-w-3xl"
             style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)" }}
           >
-            Creativity with purpose.{" "}
-            <motion.span
-              className="text-[#6F00FF] text-bold inline-block"
-              animate={{ rotate: [0, 15, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              ✳ 
-            </motion.span>
-              Design with meaning.
+            Creative strategy for brands that want to look premium and perform
+            with confidence.
           </motion.h2>
         </motion.div>
 

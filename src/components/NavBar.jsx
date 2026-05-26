@@ -50,7 +50,7 @@ const NavBar = () => {
             <img
               src={logo}
               alt="CreativeLab Studio"
-              className="h-18 sm:h-28 object-contain"
+              className="h-18 sm:h-26 object-contain"
             />
           </NavLink>
 

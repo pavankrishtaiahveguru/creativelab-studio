@@ -112,6 +112,7 @@ h6 {
 }
 
 .marquee-track {
+   display: flex;
   width: max-content;
   padding-left: 40px;
   animation: marqueeMove 10s linear infinite;
@@ -128,7 +129,7 @@ h6 {
   }
 
   to {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 

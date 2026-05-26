@@ -20,7 +20,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden bg-[#ECE7FF] p-1 flex items-center"
+      className="relative min-h-screen overflow-hidden bg-[#ECE7FF] flex items-center"
     >
       {/* Background Image */}
 
@@ -39,6 +39,7 @@ const Hero = () => {
         alt="Creative Decoration"
         className="hidden lg:block absolute top-[30%] right-[-2%] sm:top-[32%] sm:right-0 md:top-[34%] md:right-[2%] lg:top-1/2 lg:right-[3%] xl:right-[5%] 2xl:right-[5%] lg:-translate-y-1/2 w-18 sm:w-24 md:w-32 lg:w-[380px] xl:w-170 2xl:w-200 opacity-95 pointer-events-none select-none z-[2] animate-float"
       />
+
       {/* Glow Effects */}
 
       <div className="absolute -top-32 -left-20 w-90 h-90 bg-[#6F00FF]/10 rounded-full blur-[120px]" />
@@ -52,7 +53,7 @@ const Hero = () => {
           {/* LEFT */}
 
           <div className="max-w-225">
-            <p className="text-[#6F00FF] uppercase tracking-[4px] font-bold text-xs mt-2 sm:text-sm mb-7">
+            <p className="text-[#6F00FF] uppercase tracking-[4px] font-bold text-xs sm:text-sm mb-7">
               CREATIVE STUDIO • BRAND STRATEGY • VISUAL EXPERIENCES
             </p>
 

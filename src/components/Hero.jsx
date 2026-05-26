@@ -37,8 +37,7 @@ const Hero = () => {
       <img
         src={rocket}
         alt="Creative Decoration"
-        className="absolute top-150 -right-[5%] -translate-y-1/2 w-[80px] sm:w-[100px] md:w-[120px] lg:w-[450px] opacity-90 pointer-events-none select-none z-[1] animate-float drop-shadow-[0_0_25px_rgba(124,58,237,0.35)]"
-      />
+        className="absolute top-[28%] right-[2%] sm:top-[24%] sm:right-[4%] md:top-[26%] md:right-[5%] lg:top-1/2 lg:right-[4%] xl:right-[5%] lg:-translate-y-1/2 w-40 sm:w-[65px] md:w-[85px] lg:w-[220px] xl:w-[300px] 2xl:w-200 opacity-95 pointer-events-none select-none z-[1] animate-float" />
 
       {/* Glow Effects */}
 
@@ -100,14 +99,14 @@ const Hero = () => {
 
       {/* Marquee */}
 
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden border-y border-[#D9CCFF] bg-white/30 backdrop-blur-xl py-3 z-20">
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden border-y border-[#D9CCFF] bg-white/30 backdrop-blur-xl py-2 z-20">
         <div className="flex whitespace-nowrap animate-marquee">
           {[...Array(3)].map((_, repeat) => (
             <div key={repeat} className="flex items-center shrink-0">
               {scrollItems.map((item, index) => (
                 <span
                   key={index}
-                  className="font-[Founders] text-[#6F00FF] text-sm sm:text-lg lg:text-2xl tracking-[2px] px-6 sm:px-10 flex items-center"
+                  className="font-[Founders] text-[#6F00FF] text-sm sm:text-lg lg:text-2xl tracking-[2px] px-6 pt-1 sm:px-10 flex items-center"
                 >
                   {item}
 

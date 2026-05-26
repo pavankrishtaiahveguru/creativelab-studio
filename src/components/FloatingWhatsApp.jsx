@@ -14,7 +14,7 @@ export default function FloatingWhatsApp({ message = "" }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-8 right-8 z-999 group"
+      className="fixed bottom-17 right-8 z-999 group"
     >
       <div className="wa-pulse relative w-15 h-15 rounded-full bg-[#25D366] flex items-center justify-center shadow-[0_0_35px_rgba(37,211,102,0.45)] transition-all duration-300 hover:scale-110">
         <FaWhatsapp className="text-white text-[34px]" />

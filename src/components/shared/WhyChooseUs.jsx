@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
             Why Choose Us?
           </h2>
 
-          <span className="text-[#C0FF00] text-5xl lg:text-7xl ml-3">✱</span>
+          <span className="text-[#6F00FF] text-5xl lg:text-7xl ml-3">✱</span>
         </div>
 
         {/* Cards */}

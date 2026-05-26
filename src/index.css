@@ -114,7 +114,7 @@ h6 {
 .marquee-track {
   width: max-content;
   padding-left: 40px;
-  animation: marqueeMove 22s linear infinite;
+  animation: marqueeMove 10s linear infinite;
   will-change: transform;
 }
 

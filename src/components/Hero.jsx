@@ -29,10 +29,10 @@ const Hero = () => {
 
       {/* Main Container */}
 
-      <div className="relative z-10 max-w-[1500px] mx-auto px-6 sm:px-8 lg:px-12 lg:mt-5">
-        <div className="grid lg:grid-cols-2 min-h-screen items-center gap-8 xl:gap-12 pt-8 lg:pt-6 pb-10">
+      <div className="relative z-10 max-w-[1500px] mx-auto px-6 sm:px-8 lg:px-12 lg:mt-2">
+        <div className="grid lg:grid-cols-2 min-h-screen items-center gap-8 xl:gap-12 pt-28  sm:pt-24 lg:pt-6 pb-25 lg:pb-1">
+          {" "}
           {/* LEFT */}
-
           <div className="max-w-[700px]">
             <p className="text-[#6F00FF] uppercase tracking-[4px] font-bold text-xs sm:text-sm mb-5 mt-3">
               PREMIUM BRANDING • CREATIVE PRODUCTION • WEBSITE DEVELOPMENT
@@ -77,9 +77,7 @@ const Hero = () => {
               </button>
             </div>
           </div>
-
           {/* RIGHT */}
-
           <div className="hidden lg:flex items-center justify-center">
             <img
               src={rocket}

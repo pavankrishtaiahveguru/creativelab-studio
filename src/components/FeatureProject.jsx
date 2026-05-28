@@ -1,32 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
-const projects = [
-  {
-    title: "AKAASA",
-    category: "Brand Identity • Packaging • Website Design",
-    image:
-      "https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=1200",
-  },
-  {
-    title: "STUDIO NIRA",
-    category: "Creative Direction • UI/UX • Visual System",
-    image:
-      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200",
-  },
-  {
-    title: "AURELIA SKIN",
-    category: "Packaging • Brand Strategy • Campaign Visuals",
-    image:
-      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=1200",
-  },
-  {
-    title: "VÉRA",
-    category: "Website Design • Motion Direction • Branding",
-    image:
-      "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200",
-  },
-];
+import projects from "../data/projects";
 
 const CARD_W = 620;
 const GAP = 32;

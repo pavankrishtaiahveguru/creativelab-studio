@@ -29,10 +29,6 @@ const Testimonials = () => {
         {/* Heading */}
 
         <div className="text-center mb-24">
-          {/* <p className="font-[Nexa] uppercase tracking-[5px] text-[#6F00FF] text-xl font-bold mb-5">
-            TESTIMONIALS
-          </p> */}
-
           <h2 className="font-[Founders] text-[#6F00FF] text-4xl sm:text-5xl lg:text-6xl leading-none">
             Words from our clients
             <span className="text-[#6F00FF]">.</span>
@@ -75,7 +71,7 @@ const Testimonials = () => {
 
               {/* Testimonial */}
 
-              <p className="font-[Nexa] text-[#444444] text-lg leading-loose relative z-10">
+              <p className="font-[Nexa] font-[100] text-[#444444] text-lg leading-loose relative z-10">
                 "{item.text}"
               </p>
             </div>

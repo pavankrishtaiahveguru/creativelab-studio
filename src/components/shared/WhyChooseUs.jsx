@@ -70,8 +70,8 @@ const WhyChooseUs = () => {
 
                 {/* Icon */}
 
-                <div className="w-20 h-20 rounded-[24px] bg-[#ECE7FF] flex items-center justify-center mb-7 duration-500 group-hover:bg-[#6F00FF]">
-                  <Icon className="text-[#111111] text-[42px] duration-500 group-hover:text-white" />
+                <div className="w-20 h-20 rounded-[24px] bg-[#ECE7FF] flex items-center justify-center mb-7 duration-500 group-hover:bg-[#FFD700] ">
+                  <Icon className="text-[#111111] text-[42px] duration-500 group-hover:text-black" />
                 </div>
 
                 {/* Title */}

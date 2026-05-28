@@ -2,6 +2,11 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  addDocWithTimeout,
+  mapFirebaseErrorToMessage,
+} from "../lib/firestoreHelpers";
+import { sendDiscoveryNotification } from "../lib/emailService";
 import DiscoveryForm from "../components/DiscoveryForm";
 import BenefitsCard from "../components/BenefitsCard";
 import SuccessModal from "../components/SuccessModal";
@@ -178,26 +183,40 @@ function DiscoveryCall() {
     setIsSubmitting(true);
     setSubmitError("");
 
-    try {
-      console.log("Submitting started");
+    const submissionData = { ...formData };
 
-      const docRef = await addDoc(collection(db, "discovery_calls"), {
-        ...formData,
+    try {
+      console.log("Submitting started", submissionData);
+
+      const writePromise = addDoc(collection(db, "discovery_calls"), {
+        ...submissionData,
         createdAt: serverTimestamp(),
       });
 
+      // add a timeout to guard against long-hanging network calls
+      const docRef = await addDocWithTimeout(writePromise, 10000);
+
       console.log("Success:", docRef.id);
-
       setFormData(initialForm);
-
       setIsOpen(true);
-    } catch (error) {
-      console.error("Firebase Error:", error.code, error.message);
 
-      setSubmitError(error.message || "Something went wrong.");
+      try {
+        await sendDiscoveryNotification(submissionData);
+        console.log("Discovery email notification sent");
+      } catch (emailError) {
+        console.error(
+          "Discovery email notification failed:",
+          emailError?.code,
+          emailError?.message || emailError,
+        );
+      }
+    } catch (error) {
+      console.error("Firebase Error:", error?.code, error?.message || error);
+
+      const userMsg = mapFirebaseErrorToMessage(error);
+      setSubmitError(userMsg);
     } finally {
       console.log("Loading stopped");
-
       setIsSubmitting(false);
     }
   };

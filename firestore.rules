@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow creation only if required fields exist and types look correct.
+    match /discovery_calls/{docId} {
+      allow create: if request.resource.data.keys().hasAll(["fullName","email","phone","createdAt"]) 
+        && request.resource.data.fullName is string
+        && request.resource.data.email is string
+        && request.resource.data.phone is string;
+      allow read: if false;
+      allow update, delete: if false;
+    }
+
+    match /contact_submissions/{docId} {
+      allow create: if request.resource.data.keys().hasAll(["name","email","message","createdAt"]) 
+        && request.resource.data.name is string
+        && request.resource.data.email is string
+        && request.resource.data.message is string;
+      allow read: if false;
+      allow update, delete: if false;
+    }
+  }
+}

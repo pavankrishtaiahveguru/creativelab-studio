@@ -52,6 +52,7 @@
 
 .font-nexa {
   font-family: "nexa", sans-serif;
+  font-weight: 300;
 }
 
 .font-founders {
@@ -99,7 +100,7 @@ h6 {
 }
 
 .animate-marquee {
-  animation: marquee 15s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 
 /* Client Marquee */
@@ -154,4 +155,13 @@ h6 {
 
 .animate-float {
   animation: float 5s ease-in-out infinite;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

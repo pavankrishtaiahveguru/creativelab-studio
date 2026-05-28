@@ -40,7 +40,7 @@ const services = [
     description:
       "Social media marketing, LinkedIn marketing, Google Ads, SEO, and PPC support with creative direction that aligns marketing visibility with brand positioning.",
     icon: HiOutlinePresentationChartLine,
-    gradient: "from-[#D946EF] to-[#C026D3]",
+    gradient: "from-[#FFD700] to-[#FFD700]",
   },
 ];
 

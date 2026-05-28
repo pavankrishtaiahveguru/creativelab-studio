@@ -3,17 +3,22 @@ import { motion } from "framer-motion";
 import { Phone, Mail } from "lucide-react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaYoutube,
-  FaFacebookF,
-} from "react-icons/fa";
+  addDocWithTimeout,
+  mapFirebaseErrorToMessage,
+} from "../lib/firestoreHelpers";
+import { sendContactNotification } from "../lib/emailService";
+import { db } from "../lib/firebase";
 
 import WhyChooseUs from "../components/shared/WhyChooseUs";
 import Footer from "../components/Footer";
 import PageHero from "../components/shared/PageHero";
 import DownloadProfileCard from "../components/DownloadProfileCard";
-import { db } from "../lib/firebase";
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+  FaFacebookF,
+} from "react-icons/fa";
 
 const faqs = [
   {
@@ -113,21 +118,41 @@ const Contact = () => {
     setSubmitSuccess("");
     setSubmitError("");
 
+    const submissionData = { ...formData };
+
     try {
-      await addDoc(collection(db, "contact_submissions"), {
-        ...formData,
+      console.log("Contact submit started", submissionData);
+
+      const writePromise = addDoc(collection(db, "contact_submissions"), {
+        ...submissionData,
         createdAt: serverTimestamp(),
       });
 
-      setIsSubmitting(false);
+      await addDocWithTimeout(writePromise, 10000);
       setSubmitSuccess("Thank you! Your message has been sent.");
       setFormData(initialContactForm);
+      console.log("Contact submit success");
+
+      try {
+        await sendContactNotification(submissionData);
+        console.log("Contact email notification sent");
+      } catch (emailError) {
+        console.error(
+          "Contact email notification failed:",
+          emailError?.code,
+          emailError?.message || emailError,
+        );
+      }
     } catch (error) {
-      console.error("Contact form submit failed:", error);
-      setIsSubmitting(false);
-      setSubmitError(
-        "Something went wrong while sending your message. Please try again.",
+      console.error(
+        "Contact form submit failed:",
+        error?.code,
+        error?.message || error,
       );
+      const userMsg = mapFirebaseErrorToMessage(error);
+      setSubmitError(userMsg);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

@@ -1,27 +1,61 @@
 import PageHero from "../components/shared/PageHero";
 import MarqueeStrip from "../components/about/MarqueeStrip";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import portfolioData from "../data/portfolioData";
-import { HiOutlineXMark } from "react-icons/hi2";
+import {
+  HiXMark,
+  HiOutlineArrowLeft,
+  HiOutlineArrowRight,
+} from "react-icons/hi2";
 import Footer from "../components/Footer";
 
 const Portfolio = () => {
   const [active, setActive] = useState("All");
-  const [selected, setSelected] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImage, setCurrentImage] = useState(0);
 
-  // Lock background scroll when modal opens
+  // Lock body scroll
   useEffect(() => {
-    if (selected) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = selectedProject ? "hidden" : "auto";
 
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [selected]);
+  }, [selectedProject]);
+
+  const nextImage = useCallback(() => {
+    if (!selectedProject) return;
+
+    setCurrentImage((prev) =>
+      prev + 1 >= selectedProject.images.length ? 0 : prev + 1,
+    );
+  }, [selectedProject]);
+
+  const prevImage = useCallback(() => {
+    if (!selectedProject) return;
+
+    setCurrentImage((prev) =>
+      prev === 0 ? selectedProject.images.length - 1 : prev - 1,
+    );
+  }, [selectedProject]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (!selectedProject) return;
+
+      if (e.key === "ArrowRight") nextImage();
+
+      if (e.key === "ArrowLeft") prevImage();
+
+      if (e.key === "Escape") setSelectedProject(null);
+    };
+
+    window.addEventListener("keydown", handleKey);
+
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [selectedProject, currentImage, nextImage, prevImage]);
 
   const categories = [
     "All",
@@ -41,7 +75,7 @@ const Portfolio = () => {
         id="portfolio"
         className="bg-white py-28 overflow-hidden relative"
       >
-        {/* Glow Effects */}
+        {/* Glow */}
 
         <div className="absolute top-0 -left-30 w-[320px] h-80 bg-[#6F00FF]/10 blur-[120px] rounded-full" />
 
@@ -84,7 +118,7 @@ const Portfolio = () => {
                 className={`px-7 py-3 rounded-full font-[Nexa] border duration-300 cursor-pointer ${
                   active === item
                     ? "bg-[#6F00FF] text-white border-[#6F00FF]"
-                    : "bg-white text-black border-[#DDD6FE] hover:text-[#6F00FF] hover:bg-[#CCCCFF] hover:border-[#6F00FF]"
+                    : "bg-white text-black border-[#DDD6FE] hover:text-[#6F00FF] hover:bg-[#F3EEFF] hover:border-[#6F00FF]"
                 }`}
               >
                 {item}
@@ -92,7 +126,7 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* Portfolio Grid */}
+          {/* Grid */}
 
           <motion.div
             layout
@@ -107,11 +141,14 @@ const Portfolio = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
-                  onClick={() => setSelected(item)}
+                  onClick={() => {
+                    setSelectedProject(item);
+                    setCurrentImage(0);
+                  }}
                   className="group relative overflow-hidden rounded-2xl cursor-pointer bg-[#F8F8F8] shadow-[0_12px_45px_rgba(0,0,0,0.08)] duration-500 hover:scale-[0.97]"
                 >
                   <img
-                    src={item.image}
+                    src={item.images?.[0] || item.image}
                     alt={item.title}
                     loading="lazy"
                     decoding="async"
@@ -143,39 +180,123 @@ const Portfolio = () => {
 
         {/* Modal */}
 
+        {/* Modal */}
+
         <AnimatePresence>
-          {selected && (
+          {selectedProject && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelected(null)}
-              className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-md flex items-center justify-center p-6"
+              onClick={() => setSelectedProject(null)}
+              className="fixed inset-0 z-[999] bg-white/20 p-5 backdrop-blur-xl flex items-center justify-center p-3 lg:p-8"
             >
+              {/* Close */}
+
               <button
-                onClick={() => setSelected(null)}
-                className="absolute top-8 right-8 text-white z-10 cursor-pointer"
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 lg:top-8 lg:right-8 text-white z-30 cursor-pointer hover:rotate-90 duration-300"
               >
-                <HiOutlineXMark size={42} />
+                <HiXMark size={40} />
               </button>
 
               <motion.div
-                initial={{ scale: 0.92 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.92 }}
-                transition={{ duration: 0.25 }}
+                initial={{ scale: 0.94, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.94, opacity: 0 }}
+                transition={{ duration: 0.3 }}
                 onClick={(e) => e.stopPropagation()}
-                className="max-w-[1100px] w-full"
+                className="w-full max-w-[1100px] flex flex-col items-center"
               >
-                <img
-                  src={selected.image}
-                  alt={selected.title}
-                  className="rounded-[28px] w-full max-h-[85vh] object-contain"
-                />
+                {/* Main Image */}
 
-                <h3 className="font-[Founders] text-white text-4xl lg:text-5xl mt-6">
-                  {selected.title}
-                </h3>
+                {/* Main Image */}
+
+                <div className="relative w-full flex items-center justify-center">
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={currentImage}
+                      src={
+                        selectedProject.images?.[currentImage] ||
+                        selectedProject.image
+                      }
+                      alt={selectedProject.title}
+                      initial={{ opacity: 0, scale: 0.97 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.97 }}
+                      transition={{ duration: 0.35 }}
+                      className="
+        w-auto
+        max-w-[92vw]
+        lg:max-w-[80vw]
+        max-h-[65vh]
+        lg:max-h-[72vh]
+        object-contain
+        rounded-[28px]
+        bg-[#111111]
+        shadow-[0_20px_80px_rgba(0,0,0,0.45)]
+      "
+                    />
+                  </AnimatePresence>
+
+                  {/* Left Arrow */}
+
+                  {selectedProject.images?.length > 1 && (
+                    <button
+                      onClick={prevImage}
+                      className="absolute left-2 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 lg:w-14 lg:h-14 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-[#6F00FF] duration-300"
+                    >
+                      <HiOutlineArrowLeft size={24} />
+                    </button>
+                  )}
+
+                  {/* Right Arrow */}
+
+                  {selectedProject.images?.length > 1 && (
+                    <button
+                      onClick={nextImage}
+                      className="absolute right-2 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 lg:w-14 lg:h-14 rounded-full bg-black/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-[#6F00FF] duration-300"
+                    >
+                      <HiOutlineArrowRight size={24} />
+                    </button>
+                  )}
+                </div>
+
+                {/* Thumbnails */}
+
+                {selectedProject.images?.length > 1 && (
+                  <div className="flex gap-3 mt-6 overflow-x-auto max-w-full pb-2 px-1 scrollbar-hide">
+                    {selectedProject.images.map((img, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImage(index)}
+                        className={`relative shrink-0 min-w-[90px] lg:min-w-[110px] h-20 lg:h-24 rounded-2xl overflow-hidden border-2 duration-300 ${
+                          currentImage === index
+                            ? "border-[#6F00FF] scale-105"
+                            : "border-transparent opacity-50 hover:opacity-100"
+                        }`}
+                      >
+                        <img
+                          src={img}
+                          alt=""
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Title */}
+
+                <div className="mt-8 text-center">
+                  <h3 className="font-[Founders] text-black text-3xl lg:text-5xl leading-tight">
+                    {selectedProject.title}
+                  </h3>
+
+                  <p className="font-[Nexa] text-purple-500 mt-3 text-base lg:text-lg tracking-wide">
+                    {selectedProject.category}
+                  </p>
+                </div>
               </motion.div>
             </motion.div>
           )}

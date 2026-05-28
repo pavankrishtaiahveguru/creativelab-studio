@@ -3,7 +3,7 @@ import clients from "../../data/clients";
 
 const Clients = () => {
   return (
-    <section className="bg-white py-28 overflow-hidden">
+    <section className="bg-white py-24 overflow-hidden">
       <div className="max-w-[1450px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Heading */}
 
@@ -32,24 +32,26 @@ const Clients = () => {
 
       {/* Logo Marquee */}
 
-      <div className="relative overflow-hidden">
-        {/* Fade */}
+      <div className="relative overflow-hidden py-4">
+        {/* Fade Left */}
+        <div className="absolute left-0 top-0 z-10 h-full w-28 bg-gradient-to-r from-white to-transparent" />
 
-        <div className="absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-white to-transparent" />
+        {/* Fade Right */}
+        <div className="absolute right-0 top-0 z-10 h-full w-28 bg-gradient-to-l from-white to-transparent" />
 
-        <div className="absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-white to-transparent" />
-
-        <div className="flex animate-[marquee_28s_linear_infinite] whitespace-nowrap">
+        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
           {[...clients, ...clients].map((client, index) => (
             <div
               key={index}
-              className="mx-14 lg:mx-20 shrink-0 flex items-center justify-center"
+              className="mx-10 sm:mx-14 lg:mx-20 shrink-0 flex items-center justify-center"
             >
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="h-[55px] sm:h-[70px] lg:h-[80px] object-contain transition-all duration-25 "
-              />
+              <div className="flex items-center justify-center h-[220px] sm:h-[260px] lg:h-[300px]">
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="max-h-[140px] sm:max-h-[170px] lg:max-h-[220px] w-auto object-contain transition-all duration-500 hover:scale-105"
+                />
+              </div>
             </div>
           ))}
         </div>

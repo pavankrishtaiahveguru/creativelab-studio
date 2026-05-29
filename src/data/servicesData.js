@@ -82,6 +82,9 @@ const services = [
       "Wedding Invitations",
       "Couple Branding",
       "Event Visual Design",
+      "Wedding Social Media Creatives",
+      "Couple Caricatures",
+      "Custom Caricatures",
     ],
   },
 
@@ -89,11 +92,11 @@ const services = [
     title: "AI-Assisted Creative Solutions",
     icon: HiOutlineCpuChip,
     items: [
+      "AI Image Generation",
       "AI-Powered Content Creation",
       "AI-Assisted Design Workflows",
       "Marketing Content Production",
       "Brand Content Generation",
-      "Business Content Optimization",
     ],
   },
 ];

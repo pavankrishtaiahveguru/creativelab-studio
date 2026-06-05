@@ -24,8 +24,8 @@ const Testimonials = () => {
   );
 
   return (
-    <section id="testimonials" className="bg-white py-32 overflow-hidden">
-      <div className="max-w-350 mx-auto px-6 sm:px-8 lg:px-12">
+    <section id="testimonials" className="bg-white py-22 overflow-hidden">
+      <div className="max-w-350 mx-auto px-10 mb-5 mt-5 sm:px-8 lg:px-12">
         {/* Heading */}
 
         <div className="text-center mb-24">
@@ -54,8 +54,17 @@ const Testimonials = () => {
               {/* Profile */}
 
               <div className="flex items-center gap-4 mb-10">
-                <div className="w-16 h-16 rounded-full bg-[#6F00FF]/10 flex items-center justify-center border border-[#E4D8FF]">
-                  <FaUserCircle className="text-[#6F00FF] text-[38px]" />
+                <div className="w-16 h-16 rounded-full bg-[#6F00FF]/10 flex items-center justify-center border border-[#E4D8FF] overflow-hidden shrink-0">
+                  {item.logo ? (
+                    <img
+                      src={item.logo}
+                      alt={item.name}
+                      className="w-10 h-10 object-center"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <FaUserCircle className="text-[#6F00FF] text-[38px]" />
+                  )}
                 </div>
 
                 <div>
@@ -71,7 +80,7 @@ const Testimonials = () => {
 
               {/* Testimonial */}
 
-              <p className="font-[Nexa] font-[100] text-[#444444] text-lg leading-loose relative z-10">
+              <p className="font-[Nexa] font-[100] text-[#444444] text-sm leading-loose relative z-10">
                 "{item.text}"
               </p>
             </div>

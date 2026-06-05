@@ -43,9 +43,9 @@ const Clients = () => {
           {[...clients, ...clients].map((client, index) => (
             <div
               key={index}
-              className="mx-10 sm:mx-14 lg:mx-20 shrink-0 flex items-center justify-center"
+              className="mx-6 sm:mx-8 lg:mx-12 shrink-0 flex items-center justify-center"
             >
-              <div className="flex items-center justify-center h-[220px] sm:h-[260px] lg:h-[300px]">
+              <div className="flex items-center justify-center h-[220px] sm:h-[260px] lg:h-[300px] justify-center">
                 <img
                   src={client.logo}
                   alt={client.name}

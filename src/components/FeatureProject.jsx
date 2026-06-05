@@ -72,21 +72,19 @@ export default function FeatureProject() {
     <section
       ref={sectionRef}
       id="featured"
-      className="relative bg-[#ECE7FF]"
+      className="relative bg-[#ECE7FF] h-screen"
       style={{
         height: `${100 + projects.length * 75}vh`,
       }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col ">
         <div className="px-6 lg:px-10 flex flex-col align-items mb-16 mt-10">
-          {/* <p className="font-[Nexa] text-center uppercase tracking-[5px] text-[#6F00FF] mb-4">
-            FEATURED PROJECTS
-          </p> */}
-
+          
           <h2 className="font-[Founders] text-center text-[#6F00FF] text-4xl sm:text-6xl lg:text-7xl leading-[0.95]">
             Selected projects & visual stories
             <span className="text-[#6F00FF]">.</span>
           </h2>
+
           <p className="font-[Nexa] text-sm sm:text-base lg:text-xl text-[#111111] max-w-[320px] sm:max-w-[650px] lg:max-w-[1100px] mx-auto mt-6 leading-7 sm:leading-8 text-center px-4">
             A curated collection of branding, digital experiences, and visual
             systems designed for modern brands across fashion, beauty,
@@ -112,7 +110,7 @@ export default function FeatureProject() {
               transition={{
                 duration: 0.35,
               }}
-              className="group relative shrink-0 w-70 sm:w-105 lg:w-130 h-100 rounded-4xl overflow-hidden shadow-[0_20px_55px_rgba(111,0,255,0.10)] cursor-pointer"
+              className="group relative shrink-0 w-70 sm:w-105 lg:w-120 h-72 sm:h-85 rounded-4xl overflow-hidden shadow-[0_20px_55px_rgba(111,0,255,0.10)] cursor-pointer"
             >
               <img
                 src={project.image}

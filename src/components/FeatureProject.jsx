@@ -152,7 +152,7 @@ export default function FeatureProject() {
           <div className="flex justify-center mt-10">
             <button
               onClick={() => navigate("/portfolio")}
-              className="bg-[#7B68EE] hover:bg-[#6F00FF] border border-white/90 text-white font-[Nexa] font-bold px-10 py-4 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_12px_35px_rgba(123,104,238,0.30),0_0_25px_rgba(123,104,238,0.18)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.2),0_18px_45px_rgba(111,0,255,0.40)] duration-300 hover:scale-105 cursor-pointer"
+              className="bg-[#7B68EE] hover:bg-[#6F00FF] border border-white/90 text-white font-[Nexa] font-bold px-10 py-4 rounded-full shadow-[0_2px_10px_rgba(123,104,238,0.22)] hover:shadow-[0_4px_14px_rgba(111,0,255,0.3)] duration-300 hover:scale-105 cursor-pointer"
             >
               View All
             </button>

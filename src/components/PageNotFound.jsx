@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { HiArrowLeft, HiOutlineSparkles } from "react-icons/hi2";
-import rocket from "../assets/images/Rocket.png";
+import rocket from "../assets/images/rocket404.png";
 import astronaut from "../assets/images/astronaut.png";
 import { useState, useEffect } from "react";
 
@@ -36,7 +36,7 @@ const PageNotFound = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#050314] text-white flex items-center justify-center px-6 py-24">
+    <section className="relative min-h-screen overflow-hidden bg-[#050314]/80 text-white flex items-center justify-center px-6 py-24">
       {/* Background Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(111,0,255,0.12),transparent_60%)]" />
 
@@ -123,7 +123,6 @@ const PageNotFound = () => {
       </motion.div>
 
       {/* Astronaut */}
-
       <motion.img
         src={astronaut}
         alt="Astronaut"
@@ -158,7 +157,7 @@ const PageNotFound = () => {
             duration: 1,
             ease: "easeOut",
           }}
-          className="w-[260px] sm:w-[340px] md:w-[420px] mx-auto mb-8 select-none"
+          className="w-[160px] sm:w-[200px] md:w-[250px] mx-auto mb-8 select-none"
         />
 
         {/* Rocket Glow */}

@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail } from "lucide-react";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import {
-  addDocWithTimeout,
-  mapFirebaseErrorToMessage,
-} from "../lib/firestoreHelpers";
-import { sendContactNotification } from "../lib/emailService";
-import { db } from "../lib/firebase";
 
 import WhyChooseUs from "../components/shared/WhyChooseUs";
 import Footer from "../components/Footer";
@@ -61,9 +54,6 @@ const initialContactForm = {
 const Contact = () => {
   const [formData, setFormData] = useState(initialContactForm);
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState("");
-  const [submitError, setSubmitError] = useState("");
 
   const validate = () => {
     const nextErrors = {};
@@ -105,55 +95,37 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const nextErrors = validate();
+
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
       return;
     }
+    
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
 
-    setIsSubmitting(true);
-    setSubmitSuccess("");
-    setSubmitError("");
+    const message = `🚀 New Project Inquiry
 
-    const submissionData = { ...formData };
+👤 Name: ${formData.name}
+📧 Email: ${formData.email}
+📱 Phone: ${formData.phone}
 
-    try {
-      console.log("Contact submit started", submissionData);
+📝 Project Details:
+${formData.message}
 
-      const writePromise = addDoc(collection(db, "contact_submissions"), {
-        ...submissionData,
-        createdAt: serverTimestamp(),
-      });
+Sent from CreativeLab Studio Website
+  `;
 
-      await addDocWithTimeout(writePromise, 10000);
-      setSubmitSuccess("Thank you! Your message has been sent.");
-      setFormData(initialContactForm);
-      console.log("Contact submit success");
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message,
+    )}`;
 
-      try {
-        await sendContactNotification(submissionData);
-        console.log("Contact email notification sent");
-      } catch (emailError) {
-        console.error(
-          "Contact email notification failed:",
-          emailError?.code,
-          emailError?.message || emailError,
-        );
-      }
-    } catch (error) {
-      console.error(
-        "Contact form submit failed:",
-        error?.code,
-        error?.message || error,
-      );
-      const userMsg = mapFirebaseErrorToMessage(error);
-      setSubmitError(userMsg);
-    } finally {
-      setIsSubmitting(false);
-    }
+    window.open(whatsappURL, "_blank");
+
+    setFormData(initialContactForm);
   };
 
   return (
@@ -267,18 +239,10 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="bg-[#6F00FF] text-white px-9 py-4 rounded-full font-[Nexa] font-semibold cursor-pointer hover:-translate-y-1 hover:shadow-[0_15px_45px_rgba(111,0,255,0.35)] duration-300"
+                  className="bg-[#25D366] text-white px-9 py-4 rounded-full font-[Nexa] font-semibold cursor-pointer hover:-translate-y-1 duration-300"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  Send on WhatsApp
                 </button>
-                {submitSuccess && (
-                  <p className="mt-3 text-sm text-emerald-600">
-                    {submitSuccess}
-                  </p>
-                )}
-                {submitError && (
-                  <p className="mt-3 text-sm text-rose-600">{submitError}</p>
-                )}
               </form>
             </motion.div>
 

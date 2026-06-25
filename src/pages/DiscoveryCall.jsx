@@ -1,16 +1,9 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import {
-  addDocWithTimeout,
-  mapFirebaseErrorToMessage,
-} from "../lib/firestoreHelpers";
-import { sendDiscoveryNotification } from "../lib/emailService";
 import DiscoveryForm from "../components/DiscoveryForm";
 import BenefitsCard from "../components/BenefitsCard";
 import SuccessModal from "../components/SuccessModal";
-import { db } from "../lib/firebase";
 
 const initialForm = {
   fullName: "",
@@ -170,6 +163,33 @@ function DiscoveryCall() {
     }));
   };
 
+  const openWhatsApp = (submissionData) => {
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
+
+    const message =
+      `📅 New Discovery Call Booking\n` +
+      `👤 Name: ${submissionData.fullName}\n` +
+      `📧 Email: ${submissionData.email}\n` +
+      `📱 Phone: ${submissionData.phone}\n` +
+      `🏢 Company: ${submissionData.company}\n` +
+      `🎯 Project Type: ${submissionData.projectType}\n` +
+      `💰 Budget: ${submissionData.budget}\n` +
+      `📅 Preferred Date: ${submissionData.meetingDate}\n` +
+      `🕒 Preferred Time: ${submissionData.meetingTime}\n` +
+      `💻 Meeting Type: ${submissionData.meetingType}\n` +
+      `📝 Project Brief: ${submissionData.brief}\n\n` +
+      `Sent from CreativeLab Studio Website`;
+
+    const result = window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+
+    if (!result) {
+      throw new Error("WhatsApp window blocked");
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -183,40 +203,13 @@ function DiscoveryCall() {
     setIsSubmitting(true);
     setSubmitError("");
 
-    const submissionData = { ...formData };
-
     try {
-      console.log("Submitting started", submissionData);
-
-      const writePromise = addDoc(collection(db, "discovery_calls"), {
-        ...submissionData,
-        createdAt: serverTimestamp(),
-      });
-
-      // add a timeout to guard against long-hanging network calls
-      const docRef = await addDocWithTimeout(writePromise, 10000);
-
-      console.log("Success:", docRef.id);
+      openWhatsApp(formData);
       setFormData(initialForm);
       setIsOpen(true);
-
-      try {
-        await sendDiscoveryNotification(submissionData);
-        console.log("Discovery email notification sent");
-      } catch (emailError) {
-        console.error(
-          "Discovery email notification failed:",
-          emailError?.code,
-          emailError?.message || emailError,
-        );
-      }
-    } catch (error) {
-      console.error("Firebase Error:", error?.code, error?.message || error);
-
-      const userMsg = mapFirebaseErrorToMessage(error);
-      setSubmitError(userMsg);
+    } catch {
+      setSubmitError("Unable to open WhatsApp. Please try again.");
     } finally {
-      console.log("Loading stopped");
       setIsSubmitting(false);
     }
   };

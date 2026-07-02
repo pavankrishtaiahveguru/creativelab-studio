@@ -141,8 +141,8 @@ export default function TeamCard({ member, index, size = "default" }) {
   const plusIconSize = isSmall ? 14 : 26;
 
   const descLayerClass = isSmall
-    ? "absolute inset-0 z-30 flex flex-col justify-between px-3 pt-[70px] pb-3"
-    : "absolute inset-0 z-30 flex flex-col justify-between px-8 pt-[175px] pb-8";
+    ? "absolute inset-0 z-30 flex flex-col items-center justify-between px-3 pt-[70px] pb-3"
+    : "absolute inset-0 z-30 flex flex-col items-center justify-between px-8 pt-[185px] pb-8";
 
   const descTextClass = isSmall
     ? "font-[Nexa] text-[9px] leading-4 text-[#444] text-center line-clamp-5"

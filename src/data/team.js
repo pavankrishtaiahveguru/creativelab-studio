@@ -30,6 +30,7 @@ const team = [
       "https://res.cloudinary.com/dcnmzhp9k/image/upload/v1782995575/WhatsApp_Image_2026-07-01_at_18.53.04_yeklea.jpg",
 
     bg: "#E5F7F6",
+    profileLink: "https://www.linkedin.com/in/shweta-pawar-b22708147",
 
     description:
       "Driving digital growth through strategic marketing, social media campaigns, SEO, and performance-focused content that builds strong brand visibility.",

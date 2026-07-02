@@ -69,8 +69,8 @@ export default function TeamCard({ member, index, size = "default" }) {
   };
 
   const imageVariants = {
-    initial: { opacity: 1, y: 0, scale: 1 },
-    hover: { opacity: 0, y: 80, scale: 1.08, transition: springTransition },
+    initial: { opacity: 1, scale: 1 },
+    hover: { opacity: 0, scale: 1.08, transition: springTransition },
   };
 
   const plusButtonVariants = {
@@ -82,7 +82,9 @@ export default function TeamCard({ member, index, size = "default" }) {
     },
   };
 
-  // Description layer occupies the same space the image did (below the header).
+  // Description layer now lives inside the CONTENT area only (below the
+  // header, which is in normal flow) so it can never overlap the header
+  // regardless of how many lines the name/role wrap to.
   const hoverLayerVariants = {
     initial: {
       opacity: 0,
@@ -121,18 +123,23 @@ export default function TeamCard({ member, index, size = "default" }) {
 
   const offsetClass = !isSmall && isOffset ? "mt-20" : "mt-0";
 
-  const headerPadClass = isSmall ? "pt-4 px-3" : "pt-8 px-8";
+  const headerPadClass = isSmall ? "pt-4 px-3 pb-1" : "pt-8 px-8 pb-2";
   const nameTextClass = isSmall
-    ? "text-[12px] leading-[1.1] font-bold tracking-tight"
+    ? "text-[12px] leading-[1.1] font-bold tracking-tight line-clamp-1"
     : "text-[26px] leading-[1.05] font-bold tracking-tight";
-  const roleTextClass = isSmall ? "text-[9px] mt-0.5" : "text-[15px] mt-1";
+  const roleTextClass = isSmall
+    ? "text-[9px] mt-0.5 leading-tight line-clamp-2"
+    : "text-[15px] mt-1";
   const dividerClass = isSmall
     ? "w-6 h-[1.5px] mt-2 mx-auto"
     : "w-10 h-[2px] mt-4 mx-auto";
 
+  // Image now fills its CONTENT wrapper (not the whole card), so it no
+  // longer needs to be told how far down to sit — the wrapper below the
+  // header already starts it in the right place.
   const imageClass = isSmall
-    ? "absolute bottom-0 left-1/2 -translate-x-1/2 w-[92%] h-[60%] object-cover object-top rounded-t-[60px] grayscale contrast-[1.05] pointer-events-none select-none"
-    : "absolute bottom-0 left-1/2 -translate-x-1/2 w-[92%] h-[68%] object-cover object-top rounded-t-[140px] grayscale contrast-[1.05] pointer-events-none select-none";
+    ? "absolute inset-0 w-full h-full object-cover object-top rounded-t-[60px] contrast-[1.05] pointer-events-none select-none"
+    : "absolute inset-0 w-full h-full object-cover object-top rounded-t-[140px] contrast-[1.05] pointer-events-none select-none";
 
   const plusButtonClass = isSmall
     ? "absolute bottom-2.5 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white shadow-xl flex items-center justify-center"
@@ -141,15 +148,15 @@ export default function TeamCard({ member, index, size = "default" }) {
   const plusIconSize = isSmall ? 14 : 26;
 
   const descLayerClass = isSmall
-    ? "absolute inset-0 z-30 flex flex-col items-center justify-between px-3 pt-[70px] pb-3"
-    : "absolute inset-0 z-30 flex flex-col items-center justify-between px-8 pt-[185px] pb-8";
+    ? "absolute inset-0 z-30 flex flex-col items-center justify-between px-3 py-2"
+    : "absolute inset-0 z-30 flex flex-col items-center justify-between px-8 py-6";
 
   const descTextClass = isSmall
-    ? "font-[Nexa] text-[9px] leading-4 text-[#444] text-center line-clamp-5"
+    ? "font-[Nexa] text-[9px] leading-4 text-[#444] text-center line-clamp-6"
     : "font-[Nexa] text-[15px] leading-7 text-[#444] text-center";
 
   const ctaButtonClass = isSmall
-    ? "flex items-center justify-center gap-1 h-1 rounded-full border border-[#6F00FF]/20 bg-white/80 backdrop-blur-xl font-[Nexa] text-[9px] text-[#6F00FF] font-semibold hover:bg-[#6F00FF] hover:text-white transition-colors"
+    ? "flex items-center justify-center gap-1 h-6 px-2 rounded-full border border-[#6F00FF]/20 bg-white/80 backdrop-blur-xl font-[Nexa] text-[9px] text-[#6F00FF] font-semibold hover:bg-[#6F00FF] hover:text-white transition-colors"
     : "flex items-center justify-center gap-2 h-12 rounded-full border border-[#6F00FF]/20 bg-white/80 backdrop-blur-xl font-[Nexa] text-sm text-[#6F00FF] font-semibold hover:bg-[#6F00FF] hover:text-white transition-colors";
 
   const ctaIconSize = isSmall ? 12 : 16;
@@ -164,7 +171,7 @@ export default function TeamCard({ member, index, size = "default" }) {
       viewport={{ once: true }}
       onClick={handleCardClick}
       onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden cursor-pointer flex-shrink-0 ${cardSizeClass} ${offsetClass}`}
+      className={`relative overflow-hidden cursor-pointer flex-shrink-0 flex flex-col ${cardSizeClass} ${offsetClass}`}
       style={{
         background: member.bg,
       }}
@@ -175,9 +182,9 @@ export default function TeamCard({ member, index, size = "default" }) {
         className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white/10 pointer-events-none z-10"
       />
 
-      {/* ================= PERSISTENT HEADER — never fades, always on top ================= */}
+      {/* ================= HEADER — normal flow, height grows with content, never overlapped ================= */}
       <div
-        className={`absolute top-0 left-0 right-0 z-40 pointer-events-none text-center ${headerPadClass}`}
+        className={`relative z-40 shrink-0 pointer-events-none text-center ${headerPadClass}`}
       >
         <h3 className={`font-[Founders] text-[#111] ${nameTextClass} mt-2`}>
           {member.name}
@@ -188,38 +195,44 @@ export default function TeamCard({ member, index, size = "default" }) {
         <div className={`bg-black/20 rounded-full ${dividerClass}`} />
       </div>
 
-      {/* ================= IMAGE LAYER — fades out on hover ================= */}
-      <motion.div variants={imageLayerVariants} className="absolute inset-0">
-        <motion.img
-          src={member.image}
-          alt={member.name}
-          variants={imageVariants}
-          className={imageClass}
-        />
+      {/* ================= CONTENT AREA — takes remaining space below header ================= */}
+      <div className="relative flex-1 overflow-hidden">
+        {/* ================= IMAGE LAYER — fades out on hover ================= */}
+        <motion.div variants={imageLayerVariants} className="absolute inset-0">
+          <motion.img
+            src={member.image}
+            alt={member.name}
+            variants={imageVariants}
+            className={imageClass}
+          />
 
-        <motion.div
-          variants={plusButtonVariants}
-          className={`${plusButtonClass} hidden`}
-        >
-          <Plus size={plusIconSize} strokeWidth={1.5} />
+          <motion.div
+            variants={plusButtonVariants}
+            className={`${plusButtonClass} hidden`}
+          >
+            <Plus size={plusIconSize} strokeWidth={1.5} />
+          </motion.div>
         </motion.div>
-      </motion.div>
 
-      {/* ================= DESCRIPTION LAYER — replaces image on hover ================= */}
-      <motion.div variants={hoverLayerVariants} className={descLayerClass}>
-        <motion.p variants={descriptionItemVariants} className={descTextClass}>
-          {member.description}
-        </motion.p>
+        {/* ================= DESCRIPTION LAYER — replaces image on hover ================= */}
+        <motion.div variants={hoverLayerVariants} className={descLayerClass}>
+          <motion.p
+            variants={descriptionItemVariants}
+            className={descTextClass}
+          >
+            {member.description}
+          </motion.p>
 
-        <motion.button
-          variants={ctaButtonVariants}
-          whileTap={{ scale: 0.98 }}
-          className={`${ctaButtonClass} mt-6 mb-6`}
-        >
-          View Profile
-          <ArrowUpRight size={ctaIconSize} />
-        </motion.button>
-      </motion.div>
+          <motion.button
+            variants={ctaButtonVariants}
+            whileTap={{ scale: 0.98 }}
+            className={`${ctaButtonClass} mt-3 mb-1 px-5 cursor-pointer`}
+          >
+            View Profile
+            <ArrowUpRight size={ctaIconSize} />
+          </motion.button>
+        </motion.div>
+      </div>
     </motion.div>
   );
 }

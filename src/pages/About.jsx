@@ -1,13 +1,15 @@
 // src/pages/About.jsx
+import { lazy, Suspense } from "react";
 import PageHero from "../components/shared/PageHero";
 import StandOut from "../components/about/StandOut";
 import Footer from "../components/Footer";
 import WhyChooseUs from "../components/shared/WhyChooseUs";
 import MarqueeStrip from "../components/about/MarqueeStrip";
-import Story from "../components/about/Story";
 import Clients from "../components/shared/Clients";
 import Process from "../components/shared/Process";
-import TeamSection from "../components/TeamSection";
+
+const Story = lazy(() => import("../components/about/Story"));
+const TeamSection = lazy(() => import("../components/TeamSection"));
 
 const About = () => {
   return (
@@ -15,8 +17,12 @@ const About = () => {
       <PageHero />
       <StandOut />
       <Process />
-      <Story />
-      <TeamSection />
+      <Suspense fallback={<div className="min-h-[420px]" />}>
+        <Story />
+      </Suspense>
+      <Suspense fallback={<div className="min-h-[420px]" />}>
+        <TeamSection />
+      </Suspense>
       <Clients />
       <WhyChooseUs />
       <MarqueeStrip />

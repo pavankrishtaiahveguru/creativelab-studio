@@ -10,14 +10,14 @@ export default function TeamCard({ member, index, size = "default" }) {
   // Check if device is mobile
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  // Handle card tap/click
+  // Handle card tap/click — toggles between IMAGE and DESCRIPTION
   const handleCardClick = () => {
     if (isMobile) {
-      setIsTapped(!isTapped);
+      setIsTapped((prev) => !prev);
     }
   };
 
-  // Handle mouse leave (reset on desktop)
+  // Handle mouse leave (reset on desktop only — mobile stays toggled)
   const handleMouseLeave = () => {
     if (!isMobile) {
       setIsTapped(false);
@@ -25,10 +25,18 @@ export default function TeamCard({ member, index, size = "default" }) {
   };
 
   // ================= ANIMATION CONFIG =================
+  // Card lift / shadow on hover — kept as spring (desktop feel, unchanged)
   const springTransition = {
     type: "spring",
     stiffness: 100,
     damping: 15,
+  };
+
+  // Image <-> Description crossfade — tween, 0.35s easeInOut, used on both
+  // desktop hover and mobile tap so the swap always feels identical.
+  const crossfadeTransition = {
+    duration: 0.35,
+    ease: "easeInOut",
   };
 
   // ================= FRAMER MOTION VARIANTS =================
@@ -58,19 +66,25 @@ export default function TeamCard({ member, index, size = "default" }) {
     initial: {
       opacity: 1,
       zIndex: 20,
-      transition: springTransition,
+      transition: crossfadeTransition,
     },
     hover: {
       opacity: 0,
       zIndex: 20,
       pointerEvents: "none",
-      transition: springTransition,
+      transition: crossfadeTransition,
     },
   };
 
+  // Fade out, scale down slightly, drift down — per spec
   const imageVariants = {
-    initial: { opacity: 1, scale: 1 },
-    hover: { opacity: 0, scale: 1.08, transition: springTransition },
+    initial: { opacity: 1, scale: 1, y: 0 },
+    hover: {
+      opacity: 0,
+      scale: 0.95,
+      y: 12,
+      transition: crossfadeTransition,
+    },
   };
 
   const plusButtonVariants = {
@@ -82,7 +96,7 @@ export default function TeamCard({ member, index, size = "default" }) {
     },
   };
 
-  // Description layer now lives inside the CONTENT area only (below the
+  // Description layer lives inside the CONTENT area only (below the
   // header, which is in normal flow) so it can never overlap the header
   // regardless of how many lines the name/role wrap to.
   const hoverLayerVariants = {
@@ -91,7 +105,7 @@ export default function TeamCard({ member, index, size = "default" }) {
       y: 20,
       zIndex: 30,
       pointerEvents: "none",
-      transition: springTransition,
+      transition: crossfadeTransition,
     },
     hover: {
       opacity: 1,
@@ -99,7 +113,7 @@ export default function TeamCard({ member, index, size = "default" }) {
       zIndex: 30,
       pointerEvents: "auto",
       transition: {
-        ...springTransition,
+        ...crossfadeTransition,
         staggerChildren: 0.08,
         delayChildren: 0.1,
       },
@@ -108,12 +122,12 @@ export default function TeamCard({ member, index, size = "default" }) {
 
   const descriptionItemVariants = {
     initial: { opacity: 0, y: 30 },
-    hover: { opacity: 1, y: 0, transition: springTransition },
+    hover: { opacity: 1, y: 0, transition: crossfadeTransition },
   };
 
   const ctaButtonVariants = {
     initial: { opacity: 0, y: 20 },
-    hover: { opacity: 1, y: 0, transition: springTransition },
+    hover: { opacity: 1, y: 0, transition: crossfadeTransition },
   };
 
   // ================= SIZE-DEPENDENT CLASSES =================
@@ -134,7 +148,7 @@ export default function TeamCard({ member, index, size = "default" }) {
     ? "w-6 h-[1.5px] mt-2 mx-auto"
     : "w-10 h-[2px] mt-4 mx-auto";
 
-  // Image now fills its CONTENT wrapper (not the whole card), so it no
+  // Image fills its CONTENT wrapper (not the whole card), so it no
   // longer needs to be told how far down to sit — the wrapper below the
   // header already starts it in the right place.
   const imageClass = isSmall
@@ -148,27 +162,29 @@ export default function TeamCard({ member, index, size = "default" }) {
   const plusIconSize = isSmall ? 14 : 26;
 
   const descLayerClass = isSmall
-    ? "absolute inset-0 z-30 flex flex-col items-center justify-between px-3 py-2"
-    : "absolute inset-0 z-30 flex flex-col items-center justify-between px-8 py-6";
+    ? "absolute inset-0 z-30 flex flex-col items-center justify-between px-3 py-2.5 gap-2"
+    : "absolute inset-0 z-30 flex flex-col items-center justify-between px-8 py-6 gap-4";
 
   const descTextClass = isSmall
-    ? "font-[Nexa] text-[9px] leading-4 text-[#444] text-center line-clamp-6"
-    : "font-[Nexa] text-[15px] leading-7 text-[#444] text-center";
+    ? "font-[Nexa] text-[9px] leading-[14px] text-[#444] text-center line-clamp-5"
+    : "font-[Nexa] text-[15px] leading-7 text-[#444] text-center line-clamp-5";
 
+  // ================= CTA BUTTON — redesigned, responsive =================
+  // Width 70-80%, height 42-46px, rounded-full, translucent white bg,
+  // subtle purple border, 14px semibold text, arrow right, soft shadow,
+  // backdrop blur, purple fill on hover, 0.97 scale tap feedback.
   const ctaButtonClass = isSmall
-    ? "flex items-center justify-center gap-1 h-6 px-2 rounded-full border border-[#6F00FF]/20 bg-white/80 backdrop-blur-xl font-[Nexa] text-[9px] text-[#6F00FF] font-semibold hover:bg-[#6F00FF] hover:text-white transition-colors"
-    : "flex items-center justify-center gap-2 h-12 rounded-full border border-[#6F00FF]/20 bg-white/80 backdrop-blur-xl font-[Nexa] text-sm text-[#6F00FF] font-semibold hover:bg-[#6F00FF] hover:text-white transition-colors";
+    ? "flex items-center justify-center gap-1 w-[78%] h-8 rounded-full border border-[#6F00FF]/15 bg-white/85 backdrop-blur-xl shadow-sm font-[Nexa] text-[9px] font-semibold text-[#6F00FF] hover:bg-[#6F00FF] hover:text-white transition-colors duration-300"
+    : "flex items-center justify-center gap-2 w-[75%] h-11 rounded-full border border-[#6F00FF]/15 bg-white/85 backdrop-blur-xl shadow-sm font-[Nexa] text-[14px] font-semibold text-[#6F00FF] hover:bg-[#6F00FF] hover:text-white transition-colors duration-300";
 
   const ctaIconSize = isSmall ? 12 : 16;
 
   return (
     <motion.div
       initial="initial"
-      whileInView="initial"
       animate={isTapped ? "hover" : "initial"}
       whileHover={isMobile ? undefined : "hover"}
       variants={parentVariants}
-      viewport={{ once: true }}
       onClick={handleCardClick}
       onMouseLeave={handleMouseLeave}
       className={`relative overflow-hidden cursor-pointer flex-shrink-0 flex flex-col ${cardSizeClass} ${offsetClass}`}
@@ -197,7 +213,7 @@ export default function TeamCard({ member, index, size = "default" }) {
 
       {/* ================= CONTENT AREA — takes remaining space below header ================= */}
       <div className="relative flex-1 overflow-hidden">
-        {/* ================= IMAGE LAYER — fades out on hover ================= */}
+        {/* ================= IMAGE LAYER — fades/scales/drifts out on hover or tap ================= */}
         <motion.div variants={imageLayerVariants} className="absolute inset-0">
           <motion.img
             src={member.image}
@@ -214,7 +230,7 @@ export default function TeamCard({ member, index, size = "default" }) {
           </motion.div>
         </motion.div>
 
-        {/* ================= DESCRIPTION LAYER — replaces image on hover ================= */}
+        {/* ================= DESCRIPTION LAYER — replaces image on hover/tap ================= */}
         <motion.div variants={hoverLayerVariants} className={descLayerClass}>
           <motion.p
             variants={descriptionItemVariants}
@@ -225,8 +241,9 @@ export default function TeamCard({ member, index, size = "default" }) {
 
           <motion.button
             variants={ctaButtonVariants}
-            whileTap={{ scale: 0.98 }}
-            className={`${ctaButtonClass} mt-3 mb-1 md:px-5 cursor-pointer`}
+            whileTap={{ scale: 0.97 }}
+            onClick={(e) => e.stopPropagation()}
+            className={`${ctaButtonClass} mb-1 cursor-pointer`}
           >
             View Profile
             <ArrowUpRight size={ctaIconSize} />

@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail } from "lucide-react";
 
-import WhyChooseUs from "../components/shared/WhyChooseUs";
 import Footer from "../components/Footer";
 import PageHero from "../components/shared/PageHero";
 import DownloadProfileCard from "../components/DownloadProfileCard";
@@ -12,6 +11,8 @@ import {
   FaYoutube,
   FaFacebookF,
 } from "react-icons/fa";
+
+const WhyChooseUs = lazy(() => import("../components/shared/WhyChooseUs"));
 
 const faqs = [
   {
@@ -104,7 +105,7 @@ const Contact = () => {
       setErrors(nextErrors);
       return;
     }
-    
+
     const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
 
     const message = `🚀 New Project Inquiry
@@ -334,7 +335,9 @@ Sent from CreativeLab Studio Website
         </div>
       </section>
 
-      <WhyChooseUs />
+      <Suspense fallback={<div className="min-h-[320px]" />}>
+        <WhyChooseUs />
+      </Suspense>
 
       <Footer />
     </>

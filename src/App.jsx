@@ -1,16 +1,20 @@
+import { Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Portfolio from "./pages/Portfolio";
-import Contact from "./pages/Contact";
-import DiscoveryCall from "./pages/DiscoveryCall";
 import NavBar from "./components/NavBar";
 import ScrollToTop from "./components/ScrollToTop";
-import PageNotFound from "./components/PageNotFound";
-import TermsConditions from "./components/TermsConditions";
-import PrivacyPolicy from "./components/PrivacyPolicy";
+import PageLoader from "./components/PageLoader";
+import ErrorBoundary from "./components/ErrorBoundary";
+
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const Portfolio = lazy(() => import("./pages/Portfolio"));
+const Contact = lazy(() => import("./pages/Contact"));
+const DiscoveryCall = lazy(() => import("./pages/DiscoveryCall"));
+const TermsConditions = lazy(() => import("./components/TermsConditions"));
+const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
+const PageNotFound = lazy(() => import("./components/PageNotFound"));
 
 function App() {
   const location = useLocation();
@@ -34,25 +38,29 @@ function App() {
 
       {showNavbar && <NavBar />}
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <ErrorBoundary>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-        <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About />} />
 
-        <Route path="/services" element={<Services />} />
+            <Route path="/services" element={<Services />} />
 
-        <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/portfolio" element={<Portfolio />} />
 
-        <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<Contact />} />
 
-        <Route path="/discovery-call" element={<DiscoveryCall />} />
+            <Route path="/discovery-call" element={<DiscoveryCall />} />
 
-        <Route path="/terms-and-conditions" element={<TermsConditions />} />
+            <Route path="/terms-and-conditions" element={<TermsConditions />} />
 
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 }

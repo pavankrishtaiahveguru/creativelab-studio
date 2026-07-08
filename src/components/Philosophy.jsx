@@ -26,7 +26,7 @@ const Philosophy = () => {
 
           <div className="w-24 h-0.5 bg-[#6F00FF] mx-auto mt-10 mb-10 rounded-full" />
 
-          <p className="font-[Nexa] text-[#555555] text-lg leading-loose max-w-212.5 mx-auto">
+          <p className="font-[Nexa] font-light text-[#555555] text-lg leading-loose max-w-212.5 mx-auto">
             A truly memorable brand is built through clarity, emotional
             connection, and timeless visual language. Our work is designed to
             move beyond trends and create experiences that remain relevant,

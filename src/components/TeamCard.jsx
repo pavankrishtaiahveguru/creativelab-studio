@@ -125,10 +125,6 @@ export default function TeamCard({ member, index, size = "default" }) {
     hover: { opacity: 1, y: 0, transition: crossfadeTransition },
   };
 
-  const ctaButtonVariants = {
-    initial: { opacity: 0, y: 20 },
-    hover: { opacity: 1, y: 0, transition: crossfadeTransition },
-  };
 
   // ================= SIZE-DEPENDENT CLASSES =================
   const cardSizeClass = isSmall
@@ -162,22 +158,13 @@ export default function TeamCard({ member, index, size = "default" }) {
   const plusIconSize = isSmall ? 14 : 26;
 
   const descLayerClass = isSmall
-    ? "absolute inset-0 z-30 flex flex-col items-center justify-between px-3 py-2.5 gap-2"
-    : "absolute inset-0 z-30 flex flex-col items-center justify-between px-8 py-6 gap-4";
+  ? "absolute inset-0 z-30 flex flex-col items-center justify-center px-3 py-3"
+  : "absolute inset-0 z-30 flex flex-col items-center justify-center px-8 py-8";
 
-  const descTextClass = isSmall
-    ? "font-[Nexa] text-[9px] leading-[14px] text-[#444] text-center line-clamp-5"
-    : "font-[Nexa] text-[15px] leading-7 text-[#444] text-center line-clamp-5";
+const descTextClass = isSmall
+  ? "font-[Nexa] font-light text-[14px] leading-5 tracking-[0.01em] text-[#555] text-center break-words overflow-hidden"
+  : "font-[Nexa] font-light text-[16px] leading-7 tracking-[0.01em] text-[#555] text-center break-words overflow-hidden";
 
-  // ================= CTA BUTTON — redesigned, responsive =================
-  // Width 70-80%, height 42-46px, rounded-full, translucent white bg,
-  // subtle purple border, 14px semibold text, arrow right, soft shadow,
-  // backdrop blur, purple fill on hover, 0.97 scale tap feedback.
-  const ctaButtonClass = isSmall
-    ? "flex items-center justify-center gap-1 w-[78%] h-8 rounded-full border border-[#6F00FF]/15 bg-white/85 backdrop-blur-xl shadow-sm font-[Nexa] text-[9px] font-semibold text-[#6F00FF] hover:bg-[#6F00FF] hover:text-white transition-colors duration-300"
-    : "flex items-center justify-center gap-2 w-[75%] h-11 rounded-full border border-[#6F00FF]/15 bg-white/85 backdrop-blur-xl shadow-sm font-[Nexa] text-[14px] font-semibold text-[#6F00FF] hover:bg-[#6F00FF] hover:text-white transition-colors duration-300";
-
-  const ctaIconSize = isSmall ? 12 : 16;
 
   return (
     <motion.div
@@ -202,7 +189,7 @@ export default function TeamCard({ member, index, size = "default" }) {
       <div
         className={`relative z-40 shrink-0 pointer-events-none text-center ${headerPadClass}`}
       >
-        <h3 className={`font-[Founders] text-[#111] ${nameTextClass} mt-2`}>
+        <h3 className={`font-[Founders] text-[#6F00FF] ${nameTextClass} mt-2`}>
           {member.name}
         </h3>
         <p className={`font-[Nexa] text-[#555] ${roleTextClass}`}>

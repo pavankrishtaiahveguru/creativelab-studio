@@ -106,7 +106,7 @@ const Portfolio = () => {
               <span className="text-[#6F00FF]">.</span>
             </h2>
 
-            <p className="font-[Nexa] text-[#555555] max-w-180 mx-auto mt-8 leading-8">
+            <p className="font-[Nexa] font-light text-[#555555] max-w-180 mx-auto mt-8 leading-8">
               Selected work built with strategy, creativity, and elevated visual
               storytelling.
             </p>

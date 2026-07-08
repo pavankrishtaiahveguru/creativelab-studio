@@ -89,7 +89,7 @@ const StandOut = () => {
 
             {/* Text */}
 
-            <p className="font-[Nexa] text-[#555] text-lg leading-[2]">
+            <p className="font-[Nexa] text-[#555] font-light leading-[2]">
               CreativeLab Studio is a premium creative agency supporting
               branding, brand strategy, website design, creative production, and
               digital marketing for founders and modern businesses. We combine

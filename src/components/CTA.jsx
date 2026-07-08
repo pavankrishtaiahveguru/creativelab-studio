@@ -23,7 +23,7 @@ const CTA = () => {
               Let’s build something extraordinary together.
             </h2>
 
-            <p className="font-[Nexa] text-white/85 text-lg leading-loose max-w-240 mx-auto mb-12">
+            <p className="font-[Nexa] font-light text-white/85 text-lg leading-loose max-w-240 mx-auto mb-12">
               Whether you’re launching a new brand or redefining an existing
               one, CreativeLab Studio helps transform ideas into immersive
               visual experiences that stand apart.

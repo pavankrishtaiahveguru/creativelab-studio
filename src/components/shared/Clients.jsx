@@ -23,7 +23,7 @@ const Clients = () => {
             <span className="text-[#6F00FF]">.</span>
           </h2>
 
-          <p className="font-[Nexa] text-[#666666] text-lg mt-6 max-w-[700px] mx-auto">
+          <p className="font-[Nexa] font-light text-[#666666] text-lg mt-6 max-w-[700px] mx-auto">
             Partnerships built through creativity, strategy, and meaningful
             brand experiences.
           </p>

@@ -33,7 +33,7 @@ const Footer = () => {
               className="w-[460px] lg:w-[380px] object-contain mb-2 -ml-16 lg:-ml-20"
             />
 
-            <h3 className="font-[Nexa] text-[20px] text-[#6F00FF] mb-5">
+            <h3 className="font-nexa text-[20px] text-[#6F00FF] mb-5">
               Follow us on social media
             </h3>
 
@@ -153,13 +153,13 @@ const Footer = () => {
         {/* Bottom */}
 
         <div className="mt-16 pt-8 border-t border-[#B7B7F5] flex flex-col lg:flex-row items-center justify-between gap-6">
-          <p className="font-[Nexa] text-[#5D4C88] text-sm text-center lg:text-left">
+          <p className="font-nexa text-[#5D4C88] text-sm text-center lg:text-left">
             © 2026 CreativeLab Studio. Crafted with intention.
           </p>
 
           <DevelopedByStaffArc />
 
-          <div className="flex items-center gap-6 font-[Nexa] text-sm text-[#5D4C88]">
+          <div className="flex items-center gap-6 font-nexa text-sm text-[#5D4C88]">
             <Link
               to="/terms-and-conditions"
               className="hover:text-[#6F00FF] duration-300"

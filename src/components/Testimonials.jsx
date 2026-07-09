@@ -71,7 +71,7 @@ const Testimonials = () => {
                     {item.name}
                   </h4>
 
-                  <p className="font-[Nexa] text-[#777777] text-sm">
+                  <p className="font-nexa text-[#777777] text-sm">
                     {item.role}
                   </p>
                 </div>
@@ -79,7 +79,7 @@ const Testimonials = () => {
 
               {/* Testimonial */}
 
-              <p className="font-[Nexa] font-[100] text-[#444444] text-sm leading-loose relative z-10">
+              <p className="font-nexa font-[100] text-[#444444] text-sm leading-loose relative z-10">
                 "{item.text}"
               </p>
             </div>

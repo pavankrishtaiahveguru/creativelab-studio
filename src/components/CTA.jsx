@@ -15,7 +15,7 @@ const CTA = () => {
           {/* Content */}
 
           <div className="relative z-10 max-w-225 mx-auto text-center">
-            <p className="font-[Nexa] uppercase tracking-[5px] text-white/80 text-sm mb-6">
+            <p className="font-nexa uppercase tracking-[5px] text-white/80 text-sm mb-6">
               START YOUR JOURNEY
             </p>
 
@@ -23,7 +23,7 @@ const CTA = () => {
               Let’s build something extraordinary together.
             </h2>
 
-            <p className="font-[Nexa] font-light text-white/85 text-lg leading-loose max-w-240 mx-auto mb-12">
+            <p className="font-nexa font-light text-white/85 text-lg leading-loose max-w-240 mx-auto mb-12">
               Whether you’re launching a new brand or redefining an existing
               one, CreativeLab Studio helps transform ideas into immersive
               visual experiences that stand apart.
@@ -32,14 +32,14 @@ const CTA = () => {
             <div className="flex flex-wrap justify-center gap-5">
               <button
                 onClick={() => navigate("/discovery-call")}
-                className="bg-white text-[#111111] hover:bg-[#ECE7FF] px-8 py-4 rounded-full font-[Nexa] font-semibold shadow-[0_5px_25px_rgba(255,255,255,0.18)] hover:shadow-[0_10px_35px_rgba(255,255,255,0.25)] duration-300 hover:scale-105 cursor-pointer"
+                className="bg-white text-[#111111] hover:bg-[#ECE7FF] px-8 py-4 rounded-full font-nexa font-semibold shadow-[0_5px_25px_rgba(255,255,255,0.18)] hover:shadow-[0_10px_35px_rgba(255,255,255,0.25)] duration-300 hover:scale-105 cursor-pointer"
               >
                 Book a Discovery Call
               </button>
 
               <button
                 onClick={() => navigate("/contact")}
-                className="border border-white text-white hover:bg-white hover:text-[#6F00FF] px-8 py-4 rounded-full font-[Nexa] font-semibold shadow-[0_5px_25px_rgba(255,255,255,0.10)] hover:shadow-[0_10px_35px_rgba(255,255,255,0.18)] duration-300 hover:scale-105 cursor-pointer"
+                className="border border-white text-white hover:bg-white hover:text-[#6F00FF] px-8 py-4 rounded-full font-nexa font-semibold shadow-[0_5px_25px_rgba(255,255,255,0.10)] hover:shadow-[0_10px_35px_rgba(255,255,255,0.18)] duration-300 hover:scale-105 cursor-pointer"
               >
                 Start Your Project
               </button>

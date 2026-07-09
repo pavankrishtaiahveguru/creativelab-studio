@@ -18,7 +18,7 @@ const Story = () => {
             recognition.
           </h2>
 
-          <p className="font-[Nexa] text-[#555555] font-light sm:text-lg md:text-lg lg:text-xl leading-[1.7] sm:leading-[1.8] md:leading-[1.9] max-w-3xl mx-auto mt-6 sm:mt-8 md:mt-8 lg:mt-8">
+          <p className="font-nexa text-[#555555] font-light sm:text-lg md:text-lg lg:text-xl leading-[1.7] sm:leading-[1.8] md:leading-[1.9] max-w-3xl mx-auto mt-6 sm:mt-8 md:mt-8 lg:mt-8">
             CreativeLab Studio partners with founders and modern businesses to
             shape brand identities, website experiences, digital marketing
             campaigns, and creative production that feel elevated, intentional,
@@ -61,7 +61,7 @@ const Story = () => {
                   Our Mission
                 </h3>
 
-                <p className="font-[Nexa] font-light text-[#555555] leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-loose text-light sm:text-base md:text-base lg:text-lg">
+                <p className="font-nexa font-light text-[#555555] leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-loose text-light sm:text-base md:text-base lg:text-lg">
                   Our mission is to shape premium brand experiences through
                   strategic creativity, refined visual systems, and meaningful
                   storytelling.
@@ -88,7 +88,7 @@ const Story = () => {
                   Our Vision
                 </h3>
 
-                <p className="font-[Nexa] font-light text-[#555555] leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-[2] text-light sm:text-base md:text-base lg:text-lg">
+                <p className="font-nexa font-light text-[#555555] leading-relaxed sm:leading-relaxed md:leading-relaxed lg:leading-[2] text-light sm:text-base md:text-base lg:text-lg">
                   We envision CreativeLab Studio as a globally trusted creative
                   agency known for premium branding, immersive websites, and
                   high-impact digital campaigns.

@@ -74,7 +74,7 @@ const PrivacyPolicy = () => {
             transition={{ duration: 0.7 }}
             className="text-center mb-20"
           >
-            <p className="font-[Nexa] uppercase tracking-[5px] text-[#6F00FF] text-sm mb-5">
+            <p className="font-nexa uppercase tracking-[5px] text-[#6F00FF] text-sm mb-5">
               LEGAL
             </p>
 
@@ -83,7 +83,7 @@ const PrivacyPolicy = () => {
               <span className="text-[#6F00FF]"> Policy</span>
             </h1>
 
-            <p className="font-[Nexa] text-[#666666] max-w-[700px] mx-auto mt-6 leading-8">
+            <p className="font-nexa text-[#666666] max-w-[700px] mx-auto mt-6 leading-8">
               Your privacy matters to us. Learn how CreativeLab Studio collects,
               stores, and protects your information.
             </p>
@@ -145,7 +145,7 @@ const PrivacyPolicy = () => {
 
                     <p
                       className="
-                    font-[Nexa]
+                    font-nexa
                     text-[#555555]
                     leading-8
                     "
@@ -171,7 +171,7 @@ const PrivacyPolicy = () => {
           >
             <p
               className="
-            font-[Nexa]
+            font-nexa
             text-[#777777]
             "
             >

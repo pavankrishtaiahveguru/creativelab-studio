@@ -14,7 +14,7 @@ const Clients = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <p className="font-[Nexa] uppercase tracking-[6px] text-[#6F00FF] text-sm sm:text-base font-semibold mb-5">
+          <p className="font-nexa uppercase tracking-[6px] text-[#6F00FF] text-sm sm:text-base font-semibold mb-5">
             TRUSTED COLLABORATIONS
           </p>
 
@@ -23,7 +23,7 @@ const Clients = () => {
             <span className="text-[#6F00FF]">.</span>
           </h2>
 
-          <p className="font-[Nexa] font-light text-[#666666] text-lg mt-6 max-w-[700px] mx-auto">
+          <p className="font-nexa font-light text-[#666666] text-lg mt-6 max-w-[700px] mx-auto">
             Partnerships built through creativity, strategy, and meaningful
             brand experiences.
           </p>

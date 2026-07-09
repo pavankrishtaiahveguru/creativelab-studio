@@ -22,7 +22,7 @@ const ServiceCard = ({ icon, title, items }) => {
           {items.map((item, index) => (
             <div
               key={index}
-              className="font-[Nexa] text-[#555555] text-sm flex gap-2"
+              className="font-nexa text-[#555555] text-sm flex gap-2"
             >
               <span className="w-[6px] h-[6px] rounded-full bg-[#6F00FF] mt-[8px]" />
 

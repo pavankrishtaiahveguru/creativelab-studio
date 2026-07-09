@@ -87,7 +87,7 @@ export default function FeatureProject() {
             <span>.</span>
           </h2>
 
-          <p className="font-[Nexa] font-light text-sm sm:text-base lg:text-xl text-[#111111] max-w-[320px] sm:max-w-[650px] lg:max-w-[1100px] mx-auto mt-5 lg:mt-6 leading-7 sm:leading-8 text-center px-4">
+          <p className="font-nexa font-light text-sm sm:text-base lg:text-xl text-[#111111] max-w-[320px] sm:max-w-[650px] lg:max-w-[1100px] mx-auto mt-5 lg:mt-6 leading-7 sm:leading-8 text-center px-4">
             A curated collection of branding, digital experiences, and visual
             systems designed for modern brands across fashion, beauty,
             lifestyle, hospitality, and emerging businesses.
@@ -127,7 +127,7 @@ export default function FeatureProject() {
                     {project.title}
                   </h3>
 
-                  <p className="font-[Nexa] text-[#C7FF3F]">
+                  <p className="font-nexaw text-[#C7FF3F]">
                     {project.category}
                   </p>
                 </div>

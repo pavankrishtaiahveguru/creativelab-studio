@@ -83,7 +83,7 @@ const Services = () => {
                   {service.title}
                 </h3>
 
-                <p className="font-[Nexa] text-[#555555] leading-8 mb-8 max-w-130">
+                <p className="font-nexa text-[#555555] leading-8 mb-8 max-w-130">
                   {service.description}
                 </p>
 
@@ -101,7 +101,7 @@ const Services = () => {
         <div className="flex justify-center mt-14">
           <button
             onClick={() => navigate("/services")}
-            className="bg-[#7B68EE] hover:bg-[#6F00FF] border border-white/90 text-white font-[Nexa] font-bold px-10 py-4 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_12px_35px_rgba(123,104,238,0.30),0_0_25px_rgba(123,104,238,0.18)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.2),0_18px_45px_rgba(111,0,255,0.40)] duration-300 hover:scale-105 cursor-pointer"
+            className="bg-[#7B68EE] hover:bg-[#6F00FF] border border-white/90 text-white font-nexa font-bold px-10 py-4 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_12px_35px_rgba(123,104,238,0.30),0_0_25px_rgba(123,104,238,0.18)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.2),0_10px_25px_rgba(111,0,255,0.40)] duration-300 hover:scale-105 cursor-pointer"
           >
             View All
           </button>

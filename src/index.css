@@ -25,12 +25,15 @@
   --shadow-purple: 0 0 80px rgba(111, 0, 255, 0.35);
 }
 
-/* Founders */
+/* ===========================
+   Founders
+=========================== */
 
 @font-face {
   font-family: "Founders";
   src: url("/fonts/FoundersGrotesk-Regular.otf") format("opentype");
   font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -38,6 +41,7 @@
   font-family: "Founders";
   src: url("/fonts/FoundersGrotesk-Medium.otf") format("opentype");
   font-weight: 500;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -45,24 +49,59 @@
   font-family: "Founders";
   src: url("/fonts/FoundersGrotesk-Bold.otf") format("opentype");
   font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 
-/* Adobe Nexa */
+/* ===========================
+   Nexa
+=========================== */
 
-.font-nexa {
-  font-family: "nexa", sans-serif;
+@font-face {
+  font-family: "Nexa";
+  src: url("/fonts/Nexa-Thin.otf") format("opentype");
   font-weight: 200;
+  font-style: normal;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/fonts/Nexa-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===========================
+   Utility Classes
+=========================== */
 
 .font-founders {
   font-family: "Founders", sans-serif;
 }
 
-/* Base */
+.font-nexa {
+  font-family: "Nexa", sans-serif;
+}
+
+.font-nexa-200 {
+  font-family: "Nexa", sans-serif;
+  font-weight: 200;
+}
+
+.font-nexa-300 {
+  font-family: "Nexa", sans-serif;
+  font-weight: 300;
+}
+
+/* ===========================
+   Base
+=========================== */
 
 body {
-  font-family: "nexa", sans-serif;
+  font-family: "Nexa", sans-serif;
+  font-weight: 300;
   background: #0a0a0a;
   color: #ffffff;
 }
@@ -76,7 +115,9 @@ h6 {
   font-family: "Founders", sans-serif;
 }
 
-/* Hide Scrollbar */
+/* ===========================
+   Hide Scrollbar
+=========================== */
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -87,13 +128,14 @@ h6 {
   scrollbar-width: none;
 }
 
-/* Hero Marquee */
+/* ===========================
+   Hero Marquee
+=========================== */
 
 @keyframes marquee {
   from {
     transform: translateX(0%);
   }
-
   to {
     transform: translateX(-50%);
   }
@@ -103,19 +145,19 @@ h6 {
   animation: marquee 25s linear infinite;
 }
 
-/* Client Marquee */
+/* ===========================
+   Client Marquee
+=========================== */
 
 @keyframes marqueeMove {
   from {
     transform: translateX(0%);
   }
-
   to {
     transform: translateX(-50%);
   }
 }
 
-/* LET'S CREATE NEW EXPERIENCE */
 .marquee-track {
   width: max-content;
   padding-left: 40px;
@@ -127,17 +169,9 @@ h6 {
   animation-play-state: paused;
 }
 
-@keyframes marqueeMove {
-  from {
-    transform: translateX(0%);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* rocket */
+/* ===========================
+   Rocket Animation
+=========================== */
 
 @keyframes float {
   0% {
@@ -155,13 +189,4 @@ h6 {
 
 .animate-float {
   animation: float 5s ease-in-out infinite;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }

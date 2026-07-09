@@ -36,7 +36,7 @@ export default function TeamSection() {
             <span className="text-[#6F00FF]">.</span>
           </h2>
 
-          <p className="font-[Nexa] text-[#666] font-light text-lg leading-8 max-w-[720px] mx-auto mt-7">
+          <p className="font-nexa text-[#666] font-light text-lg leading-8 max-w-[720px] mx-auto mt-7">
             Behind every successful brand is a passionate team of creatives,
             strategists, designers, developers and storytellers dedicated to
             crafting meaningful experiences.
@@ -105,7 +105,7 @@ export default function TeamSection() {
           transition={{ delay: 0.2, duration: 0.7 }}
           className="mt-28 text-center"
         >
-          <p className="font-[Nexa] text-[#555] text-lg">
+          <p className="font-nexa text-[#555] text-lg">
             Collaboration. Creativity. Innovation.
           </p>
 
@@ -115,7 +115,7 @@ export default function TeamSection() {
 
           <button
           onClick={() => navigate("/discovery-call")}
-           className="mt-10 bg-[#6F00FF] hover:bg-[#5A00D6] text-white font-[Nexa] font-semibold px-10 py-4 rounded-full shadow-[0_20px_50px_rgba(111,0,255,0.25)] hover:shadow-[0_30px_60px_rgba(111,0,255,0.35)] hover:scale-105 transition-all duration-300 cursor-pointer">
+           className="mt-10 bg-[#6F00FF] hover:bg-[#5A00D6] text-white font-nexa font-semibold px-10 py-4 rounded-full shadow-[0_5px_40px_rgba(111,0,255,0.25)] hover:shadow-[0_10px_20px_rgba(111,0,255,0.35)] hover:scale-105 transition-all duration-300 cursor-pointer">
             Let's Work Together
           </button>
         </motion.div>

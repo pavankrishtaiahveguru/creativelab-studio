@@ -82,14 +82,14 @@ const StandOut = () => {
           >
             {/* Label */}
 
-            <p className="font-[Nexa] text-[#6F00FF] text-sm tracking-[5px] uppercase mb-6 flex items-center gap-3">
+            <p className="font-[Nexa] font-bold text-[#6F00FF] text-sm tracking-[5px] uppercase mb-6 flex items-center gap-3">
               <span className="w-6 h-px bg-[#6F00FF]" />
               About CreativeLab
             </p>
 
             {/* Text */}
 
-            <p className="font-[Nexa] text-[#555] font-light leading-[2]">
+            <p className="font-nexa md:text-lg text-[#555] font-light leading-[2]">
               CreativeLab Studio is a premium creative agency supporting
               branding, brand strategy, website design, creative production, and
               digital marketing for founders and modern businesses. We combine

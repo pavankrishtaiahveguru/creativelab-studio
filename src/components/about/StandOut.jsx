@@ -106,7 +106,7 @@ const StandOut = () => {
                   120+
                 </h3>
 
-                <p className="font-[Nexa] text-[#999] text-xs tracking-[2px] uppercase leading-5">
+                <p className="font-[Nexa] text-[#999] text-[8px] md:text-sm text-center tracking-[2px] uppercase leading-5">
                   Projects Crafted
                 </p>
               </div>
@@ -116,7 +116,7 @@ const StandOut = () => {
                   45+
                 </h3>
 
-                <p className="font-[Nexa] text-[#999] text-xs tracking-[2px] uppercase leading-5">
+                <p className="font-[Nexa] text-[#999] text-[8px] md:text-sm text-center tracking-[2px] uppercase leading-5">
                   Brands Collaborated
                 </p>
               </div>
@@ -126,7 +126,7 @@ const StandOut = () => {
                   5+
                 </h3>
 
-                <p className="font-[Nexa] text-[#999] text-xs tracking-[2px] uppercase leading-5">
+                <p className="font-[Nexa] text-[#999] text-[8px] md:text-sm text-center tracking-[2px] uppercase leading-5">
                   Creative Industries
                 </p>
               </div>

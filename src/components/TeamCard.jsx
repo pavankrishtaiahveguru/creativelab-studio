@@ -125,7 +125,6 @@ export default function TeamCard({ member, index, size = "default" }) {
     hover: { opacity: 1, y: 0, transition: crossfadeTransition },
   };
 
-
   // ================= SIZE-DEPENDENT CLASSES =================
   const cardSizeClass = isSmall
     ? "w-[108px] h-[240px] rounded-t-[80px] rounded-b-[80px]"
@@ -158,13 +157,12 @@ export default function TeamCard({ member, index, size = "default" }) {
   const plusIconSize = isSmall ? 14 : 26;
 
   const descLayerClass = isSmall
-  ? "absolute inset-0 z-30 flex flex-col items-center justify-center px-3 py-3"
-  : "absolute inset-0 z-30 flex flex-col items-center justify-center px-8 py-8";
+    ? "absolute inset-0 z-30 flex flex-col items-center justify-center px-3 py-3"
+    : "absolute inset-0 z-30 flex flex-col items-center justify-center px-8 py-8";
 
-const descTextClass = isSmall
-  ? "font-[Nexa] font-light text-[14px] leading-5 tracking-[0.01em] text-[#555] text-center break-words overflow-hidden"
-  : "font-[Nexa] font-light text-[16px] leading-7 tracking-[0.01em] text-[#555] text-center break-words overflow-hidden";
-
+  const descTextClass = isSmall
+    ? "font-[Nexa] font-light text-[8px] leading-[10px] tracking-normal text-[#555] text-center break-words whitespace-normal hyphens-auto w-full"
+    : "font-[Nexa] font-light text-[16px] leading-7 tracking-[0.01em] text-[#555] text-center break-words";
 
   return (
     <motion.div

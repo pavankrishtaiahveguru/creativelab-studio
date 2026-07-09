@@ -76,7 +76,7 @@ const WhyChooseUs = () => {
 
                 {/* Title */}
 
-                <h3 className="font-[Founders] text-[#111111] text-[26px] leading-[1.25]">
+                <h3 className="font-[Founders] text-[#111111] text-[20px] md:text-[26px] leading-[1.25]">
                   {item.title}
                 </h3>
               </div>

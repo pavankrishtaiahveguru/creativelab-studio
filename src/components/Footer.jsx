@@ -157,7 +157,6 @@ const Footer = () => {
             © 2026 CreativeLab Studio. Crafted with intention.
           </p>
 
-          {/* <DevelopedByStaffArc /> */}
 
           <div className="flex items-center gap-6 font-nexa text-sm text-[#5D4C88]">
             <Link
